@@ -1,0 +1,161 @@
+\documentclass[main.tex]{subfiles}
+\usepackage{tikz-cd}
+\begin{document}
+\chapter{Measure Theory and Integration} 
+\section{Measuring Sets}
+
+First we define a rudimentary "\emph{measure}" for a rectangle. Then, by means of cube coverings of sets, we define a rudimentary measure for arbitrary sets in $\RR^d$, called the \emph{outer measure}, and results that follow, reg. open sets etc. leads us to define a restriction on the \emph{outer measure}, and this gives us the \emph{Lebesgue Measure}.
+
+\subsection{Primitive Measurement of Rectangles}
+\defn{Rectangle (Open) in $\RR^d$}{$$R:=\Pi_{i=1}^d (a_i,b_i)$$}
+\defn{Rectangle (Closed) in $\RR^d$}{$$\overline{R}=\Pi_{i=1}^d [a_i,b_i]$$}
+\defn{Almost disjoint collection of rectangles $\{R_i\}$}{A collection of rectangles $\{R_i\}$ is said to be \emph{almost disjoint} if ${R_i}^{\circ}\cap{R_j}^{\circ}=\varnothing$ for all $i,j \in \NN$.}
+\defn{Volume of a rectangle (both closed and open)}{$$|R|=\overline{R}:= \Pi_{i=1}^d |b_i-a_i| $$}
+
+\lemp{If $R \subset \RR^d$ is a rectangle, and $\{R_i\}_{i=1}^N$ is a collection of almost disjoint rectangles such that $R=\cup_{i=1}^N R_i$, then $|R|=\sum_{i=1}^N |R_i$}{Let $R=\Pi_{i=1}^d[a_i,b_i]$ and subdivide each $[a_i,b_i]$ into $t_{i0}=a_i<t_{i1}<t_{i2}<\cdots <t_{i{N-1}}< b_i=t_{iN}$ where $[t_{ik},t_{i{k+1}}]$ is the interval that forms the $i-th$ coordinate of \emph{some} rectangle $R_q$ in our collection. Let $L_kj$ represent the $j-th$ subdivision interval of the $k-th$ interval of $R$. All possible products taken of $L_{kj}$, call it $R_{pq}$ yields a division of $R$ into smaller rectangles, and by virtue of the definition of $|R|$, this is equal to $\sum_{p,q}|R_{pq}|$. In noting that each $R_i$ can in the same sense be subdivided, and is eventually covered exactly by a subcollection of $R_{pq}$ and that each $R_i$ is robustly covered so, we have that $|R_i|=\sum_{q} |R_{pq}|$, which would yield $|R|=\sum |R_i|$.   }
+A corollary of this is:
+\begin{remark}
+    If $R=\cup_{i=1}^N R_i$ for rectangles $R_i$ (where $R$ itself is a rectangle), then $$|R| \leq \sum |R_i| $$
+\end{remark}
+
+\lemp{(Dyadic Rationals are Dense in $\RR$ and $\RR^d$) The set $$T=\{\frac{1}{2^k}(m_1,m_2,\cdots,m_d):k \in \NN, m_1,m_2 \cdots m_d \in \ZZ \}$$ is dense in $\RR^d$}{Let $\vec{x}=(x_1,x_2 \cdots x_d) \in \RR^d$, and let $\varepsilon>0$. Choose a cube $\pi_{i=1}^d [p_i,p_i+e]$ that is sitting inside $B_{\varepsilon}(x)$. Let $a_j$ be the smallest distance between $x_j$ and the endpoints of the $j-th$ interval of the cube. Let $a=\inf(a_j)$. Now choose $k \in \NN$ such that $2^k (a)>2$, and choose $m_j$ such that $2^k (p_j)<m_j<2^kp_j +2^k e$, which yields a point $\frac{1}{2^k}(m_1,m_2,\cdots m_d)$ in this cube, in this ball. Hence, dense. }
+
+\thmp{(Open sets are approximately a bunch of cubes) Let $\OO \subseteq \RR^d$, then there exists $\{Q_i\}_{i=1}^{\infty}$, a countable collection of almost disjoint closed cubes such that $$\OO=\cup_{i=1}^{\infty} Q_i $$ }{Subdivide $\RR^d$ into almost disjoint 1-cubes, making a grid of 1-cubes. Let $A_0$ be the set of all grid cubes that fall inside $\OO$, and let $T_0$ be the set of all grid cubes that fall both inside and outside $\OO$. In step 2, subdivide the cubes in $T_0$ into halves, and let $A_1$ be the set of all cubes obtained such that they are fully in $\OO$, and let $T_1$ be the set of all cubes such that they fall both in and out of $\OO$. Keep going as such, subdividing in each step by half. Take all $A_1,A_2 \cdots$ and union all sets in all of them. This is denoted by $\cup_{i=1}^{\infty} Q_i$ which is obviously contained in $\OO$. Now let $x\in \OO$. $x \in B_{r}(x) \subseteq \OO$. Choose a cube inside this, do the same procedure as above proof, and get an $a$ as the above proof (by taking $Q=\Pi_{g=1}^d [p_g,p_g+e]$ and setting $a=\inf(a_j)$ where $a_j$ is the shortest distance between $x_j$ and the $j-th$ interval's endpoints). Choose $k$ large enough such that $2^k a>2$ and choose two integers $m_j$ and $m_j+1$ in between $2^k p_j<m_j<m_j+1<2^k p_j +2^k e$. Now take the product $\Pi_{j=1}^d [m_j/2^k, (m_j+1)/2^k]$, which would end up being a cube in some $A_i$ (accepted cubes), implying $\OO \subseteq \cup_{i=1}^{\infty} Q_i$. Hence $$ \OO=\cup_{i=1}^{\infty} Q_i $$ }
+
+\subsection{Primitive Measurement of \emph{Sets}- The Outer Measure}
+Now we define, equipped with our primitive notion of a measure for a rectangle, what it means to \emph{measure a set}. 
+\defn{Outer Measure $M_*$}{Let $E \subseteq \RR^d$. $$M_*(E):=\inf\{\sum_{i=1}^{\infty}|Q_i|: \{Q_i\}\text{ is a cube covering of }E \} $$
+\begin{remark} This definition is intuitive because it takes into account all possible cube coverings, and finds the smallest such in the sense of "measurement". The name "outer measure" encompasses the fact that we are approximating the set $E$ by coverings of $E$, essentially from the outside rather than the inside.  \end{remark}}
+
+\thmp{Let $M^R_*(E):=\inf\{\sum_{i=1}^{\infty}|R_i|: \{R_i\}\text{ a collection of rectangles covering }E\}$ and $M^C_*(E):=\inf\{\sum_{i=1}^{\infty}|Q_i|: \text{ where }\{R_i\}\text{ is a collection of cubes covering }E\}$. Then: 
+$$M^R_{*}=M^C_* $$}{It is immediately obvious that any cube covering is a rectangle covering, implying that $M^R_*\leq M^C_*$.
+For the other direction, we start with a rectangle covering $\{R_i\}$ of $E$, and then slightly extend these rectangles, by some $\delta$ such that the extended rectangles have side length ratios to be rational (This can be done, as the next throwaway result suggests), and their volumes $|S_j|\leq |R_j|+\varepsilon/2^j $. Once this is done, We can subdivide $|SS_j|$ into smaller closed, almost disjoint, finite cubes $S_j=\cup_{i=1}^{N_j} Q_{ij}$ and conclude that $\sum |Q_{ij}|=|S_j|$ and eventually say that $\{Q_{ij}\}$ is a covering of $E$ such that $\sum|Q_{ij}| \leq \sum |R_k|+\varepsilon$. \\\\ So to conclude, given a rectangle covering $\{R_i\}$, for every $\varepsilon>0$ we have a cube covering $\{Q_i\}$ such that $$\sum|Q_{ij}|\leq \sum|R_j|+\varepsilon$$ which means that $$M^C_* \leq M^R_* $$ which concludes the proof. 
+}
+\lemp{\textbf{(throwaway)} Given a rectangle $R$, and an $\varepsilon>0$, there exists a larger rectangle $R \subset R'$ such that $|R'| \leq |R|+\varepsilon$ and the side-side ratios of $|R'|$ are rational, or rather, we can have $R'$ to be equal to the union of a finite number of almost disjoint closed cubes $Q_i$.}{DRAG (WORK IN PROGRESS)}
+
+\thmp{\begin{enumerate}
+    \item Outer measure of a closed cube $Q$ is $|Q|$
+    \item Outer measure of an open cube $Q$ is $|Q|$
+    \item Outer measure of a closed rectangle $R$ is $|R|$
+    \item Outer measure of an open rectangle $R$ is $|R|$
+\end{enumerate}}{1. Let $Q$ being a closed cube covers itself, therefore $M_*(Q)\leq |Q|$. Consider any cube covering $Q \subseteq \cup_i Q_i$ of $Q$. Let $S_j$ be a slightly larger open cube than $Q_j$ such that $|S_j|\leq |Q_j|(1+\varepsilon)$. $\{S_j\}$ covers $Q$, and hence a finite subcovering $\{S_i\}_{i=1}^N$ covers $Q$, which means $|Q| \leq \sum_{i=1}^N|S_j| \leq (1+\varepsilon)\sum_{i=1}^{N}|Q_i|\leq (1+\varepsilon)(\sum_{i=1}^{\infty} |Q_i|) $ which gives us that for every $\varepsilon$ and a covering $Q_i$, we have $|Q|\leq \sum_i |Q_i| (1+\varepsilon)$ which proves our result.
+\\\\ 2. Let $Q$ be open. $\overline{Q}$ covers $Q$, implying $M_*(Q) \leq |\overline{Q}|=|Q|$. Let $Q_0$ be any closed set inside $Q$. We have $M*(Q_0)=|Q_0| \leq M*(Q)$ from the fact that $M*$ is monotonic (under the inclusion relation). Since we can make $|Q_0|$ go arbitrarily close to $|Q|$, we have that $|Q| \leq M_*(Q)$, which proves (2).
+\\\\ (3) and (4) for rectangles follow similarly.  }
+
+\lemp{\textbf{(Two light lemmas)} 
+\\\begin{enumerate}
+\item If $E_1 \subseteq E_2$ then $M_*(E_1) \leq M_*(E_2)$
+\item Given $\varepsilon>0$, there exists a covering $\{Q_i\}$ of $E$ such that $\sum_{i=1}^{\infty} |Q_i| \leq M_*(E)+\varepsilon$
+\end{enumerate}}{$E_1\subseteq E_2 \implies $ any covering of $E_2$ is a covering for $E_1$, which ultimately gives us (1).
+\\\\ (2) follows from the definition. }
+\thmp{\textbf{(Countable sub-additivity of outer measure)} Let $E=\cup_{i=1}^{\infty} E_i$. Then $M_*(E)\leq \sum_{i=1}^{\infty}M_*(E_i)$}{Let $\{Q_{i,j}\}_{i=1}^{\infty}$ be a closed almost disjoint cube covering for $E_j$ such that $\sum_{j=1}^{\infty}|Q_{ij}|\leq m_*(E_j)+\varepsilon/2^j$. $\{Q_{ij}:i,j \in \NN\}$ is a covering for $E$ implying $m_*(E)\leq \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}|Q_{ij}| \leq \sum_{j=1}^{\infty}m_*(E_j)+\varepsilon$ which implies that $m_*(E)\leq \sum_{i=1}^{\infty} m_*(E_j)$ }
+
+\thmp{\textbf{(Open Set criteria)} $$m_*(E)=\inf(P)=\inf\{m_*(\OO):\OO \text{ open and }E \subseteq \OO\}$$}{From monotonicity, it is clear that $M_*(E)\leq\inf(P)$. Let $\{Q_i\}$ be such that $\sum_{i=1}^{\infty} \leq M_*(E)+\varepsilon/2$ and for each $Q_i$ find open cube $S_i$ so that $|S_i|\leq |Q_i|+\varepsilon/2^{i+1}$. Then $\sum_i |S_i| \leq \sum_i |Q_i| +\varepsilon/2$. Note that $\{S_i\}$ is an open cover for $E$, so let $O=\cup_i S_i$. We have $M_*(O) \leq \sum_{i}|S_i| \leq M_*(E)+\varepsilon$. We are done.   }
+\thmp{If $E=E_1 \cup E_2$ with $d(E_1,E_2)>0$ and $E_1 \cap E_2=\varnothing$, then $M_*(E)=M_*(E_1)+M_*(E_2)$}{From countable additivity we have $m_*(E)\leq m_*(E_1)+m_*(E_2)$. For the other direction, take an open covering $\{Q_i\}$ for $E$ such that $\sum_i |Q_i| \leq m_*(E)+\varepsilon$. We subdivide each $Q_i$ into $Q_{ij}$ (a finite number of them for each i) such that each cube is of side length less than $d(E_1,E_2)$. This means that a subcollection of $Q_{ij}$ covers $E_1$, and another, disjoint subcollection covers $E_2$, which means that $m_*(E_1)+m_*(E_2)\leq \sum_{ij} |Q_ij|\leq m_*(E)+\varepsilon$. We are done. 
+
+}
+\lemp{If $E_1,E_2 \cdots E_k$ are disjoint sets such that $d(E_i,E_j)>0$ for all i and j, then $m_*(\cup_{i=1}^kE_i)=\sum_{i=1}^km_*(E_i)$}{Induction}
+
+\thmp{If $E=\cup_{i=1}^{\infty}Q_i$ for almost disjoint closed cubes, then $m_*(E)=\sum_i |Q_i|$}{From subadditivity we have $m_*(E) \leq \sum_i |Q_i|$. We construct $S_j\subset Q_j$ slightly smaller than $Q_j$, i.e, $|Q_j|\leq|S_j|+\varepsilon/2^j$. These $S_j$ are all disjoint, and their distance from each other are all positive. For any $n \in \NN$, we have $\cup_{i=1}^n S_i \subseteq E$, which gives $\sum_{i=1}^n |S_i| \leq m_*(E)$. This gives $\sum_{i=1}^n |Q_i| \leq m_*(E)+\sum_{i=1}^n\varepsilon/2^i$, which, in the limit, yields our desired result. }
+\subsection{The Lebesgue Measure}
+\defn{Lebesgue Measurable Set}{A set $E \subseteq \RR^d$ is said to be Lebesgue measurable if for every $\varepsilon>0$, there exists an open set $O$ such that $E \subseteq O$ and $m_*(O-E)<\varepsilon$
+\\\\ If $E$ is lebesgue measurable, then its measure is defined as $$\text{Lebesgue measure}=m(E)=m_*(E)$$}
+\lemp{Every open set is lebesgue measurable.}{Trivial}
+\lemp{Every set $E$ such that $m_*(E)=0$ is lebesgue measurable (and are called \emph{\textbf{measure zero sets}}).}{If $m_*(E)=0$, then for an $\varepsilon>0$, there exists an open set $O$ such that $E \subset O$ and $m_*(O)\leq \varepsilon$, but $O-E$ is a subset of $O$, which gives us the desired result.}
+\thmp{Countable union of measurable sets are measurable.}{Let $E=\cup_i E_i$ where each $E_i$ are measurable. For $E_i$, take an open set $E_i \subseteq O_i$ such that $m_*(O_i-E_i)\leq \varepsilon/2^i$. Consider $(\cup_i O_i) -(\cup_i E_i) \subseteq \cup_i (O_i-E_i)$ which gives $m_*((\cup_i O_i) -(\cup_i E_i))\leq \sum_i (m_*(O_i-E_i))\leq \varepsilon$ which yields us the result.}
+
+\lemp{If $F$ is closed and $K$ is compact, with $F \cap K =\varnothing$ then $d(F,K)>0$.}{If $d(F,K)>0$, then there exists sequences $x_n \in F$ and $y_n \in K$ such that $d(x_n,y_n)\to 0$. Since $y_n$ is in $K$, from heine borel we have $y_{n_k}\to y \in K$ for some subsequence $y_{n_k}$. This means that $x_{n_k} \to y$, but $F$ being closed gives us $y \in F$, a contradiction. }
+
+\lemp{In $\RR^d$, any closed set $F$ is a countable union of compact sets.}{Let $B_{i}[0]$ be an increasing sequence of compact balls. $F=\cup_i F \cap B_{i}[0]$. Closed subsets of compact sets are compact, so we are done.}
+
+\thmp{Compact sets in $\RR^d$ are measurable.}{Let $\varepsilon>0$ and $O$ be such that $m_*(O)\leq m_*(E)+\varepsilon$. $O-E$ is actually an open set, so $O-E= \cup_i Q_i$ for a collection (countable) of almost disjoint closed cubes. Let $S_j \subset Q_j$ such that $|Q_j|\leq |S_j|+\varepsilon/2^j$. Note that, since $S_j$ are closed, they are compact and disjoint from other $S_i$. For $n \in \NN$, we have $E\cup_{i=1}^n S_i \subseteq O$, or $m_*(E \cup_{i=1}^n S_i)=m_*(E)+\sum_{i=1}^n|S_i|\leq m_*(O) \implies m_*(E)+\sum_{i=1}^n |Q_i| \leq m_*(O)+\sum_{i=1}^n \varepsilon/2^i $. Taking the n limit yields $$m_*(E)+\sum_{i=1}^{\infty} |Q_i|=m_*(E)+m_*(O-E) \leq m_*(O)+\varepsilon $$ or $m_*(E)+m_*(O-E)\leq (\text{ or even }=) m_*(O)$. This tells us that $m_*(O-E)\leq \varepsilon$. Hence $E$ is measurable. }
+
+\begin{remark}
+    Since compact sets are measurable, and closed sets are a countable union of compact sets, closed sets are also measurable. Thus far, our collection of measurable sets are those that are open, closed, and a countable union of those that are already measurable. 
+\end{remark}
+
+\thmp{Complement of a measurable set is measurable.}{Let $E$ be measurable. Let $O_n$ be such that $m_*(O_n-E)\leq 1/n$. Consider $E\subseteq \cap_i O_i$, or $\cup_i O_i^c \subseteq E^c$. We have $m_*(E^c-\cup_i O_i^c)=m_*(\cap_i O_i-E)\leq 1/n$ for all $n$, which means $E^c-\cup_i O_i^c=J$ is a measure 0 set, hence measurable. $J\subseteq E^c$, and $J \cup_i(O_i^c)=E^c$, implying that $E^c$ is a uniton of two measurable sets, hence itself is measurable. }
+
+\lemp{Countable intersection of measurable sets is measurable.}{$\cap_{i} E_i = (\cup_i E^c_i)^c$.}
+
+\begin{remark}
+    Thus far, we have open sets and closed sets to be measurable, as are countable unions, intersections and complements of measurable sets. 
+\end{remark}
+
+\thmp{\textbf{(Countable additivity)} Let $E=\cup_i E_i$ for measurable, disjoint sets $\{E_i\}$. Then, $$m(E)=\sum_{i=1}^{\infty} m(E_i) $$}{One direction $m(E)\leq \sum_{i=1}^{\infty} m(E_i)$ is trivial from subadditivity. 
+\\ \textbf{\emph{Assume that each $E_i$ are bounded}}
+\\ Consider $E_i^C$, which are measurable, and find $O_i$ such that $m_*(O_i-E_i)\leq \varepsilon/2^i$. Let $F_i=O_i^C$ be closed sets such that $F_i \subset E_i$ and $m_*(E_i-F_i)=m_*(O_i-E_i^c)\leq \varepsilon/2^i$. for every $n$, $\cup_{i=1}^n F_i \subseteq E$, implying $m_*(\cup_{i=1}^n F_i)\leq m_*(E)$ which gives (since $F_i$ are closed and bounded, and disjoint with each other) $\sum_{i=1}^n m_*(F_i) \leq m_*(E)$. Also, $E_i=E_i-F_i \cup F_i$ implying that $m_*(E_i)\leq m_*(E_i-F_i)+m_*(F_i)\leq \varepsilon/2^i +m_*(F_i)$, which means $\sum_{i=1}^n m_*(E_i)\leq \sum_{i=1}^n m_*(F_i)+\sum_{i=1}^n \varepsilon/2^i $. In the limit we have $$\sum_{i=1}^{\infty} m_*(E_i)\leq \sum_{i=1}^{\infty} m_*(F_i)+\varepsilon\leq m_*(E)+\varepsilon $$ which concludes the result for the case where each $E_i$ are bounded.
+\\\\ Suppose they are not bounded. Consider $Q_1 \subset Q_2 \cdots $ a sequence of increasing cubes converging to $\RR^d$ centered at origin. Let $S_1=Q_1$, $S_2=Q_2-Q_1$, $S_n=Q_n-Q_{n-1}$ and so on. These $S_i$ are disjoint, bounded, and measurable sets. Define $E_{jk}=E_j \cap S_k$. These too, are each measurable, and bounded. $E_j=E_j \cap (\cup_k S_k)=\cup_k E_{jk}$ implying from the previous proof that $m_*(E_j)=\sum_k m_*(E_{jk})$. We know also that $E_{jk}$ are disjoint, bounded, measurable and its union equals $E$. So $m_*(E)=\sum_j (\sum_k m_*(E_{jk}))=\sum_j (m_*(E_j))$}
+
+\thmp{\textbf{(Limit Exchange)} \begin{enumerate}
+\item Let $E_1 \subseteq E_2 \cdots $ be an increasing sequence of measurable sets. Then $m(\cup_i E_i)=\lim_{n \to \infty} m(E_n)$.
+\item Let $F_{n+1} \subseteq F_n\cdots F_3\subseteq F_2 \subseteq F_1$ be a decreasing sequence of measurable sets such that $m(F_1)<\infty$. Then $m(\cup_i F_i)=\lim_{n \to \infty} m(F_n)$ 
+\end{enumerate}}{(1) Define $Q_1=E_1$, $Q_2=E_2-E_1$, $Q_3=E_3-E_2$ and so on. These are disjoint measurable sets. $m(\cup_{i=1}^{\infty})=m(\cup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty}m(Q_i)=\lim_{n \to \infty} \sum_{i=1}^n m(Q_i)=\lim_{n \to \infty} m(E_n)$ (since $m(Q_i)=m(E_i-E_{i-1})=m(E_i)-m(E_{i-1})$).
+\\\\ For (2), we consider $F_1-F_1 \subset F_1-F_2 \cdots $ an increasing sequence of measurable sets. We then have $m(\cup_i(F_1-F_i))=\lim_{n \to \infty} m(F_1-F_i)=m(F_1)-\lim m(F_i)$. This immediately gives us the result.  }
+\thmp{Let $E$ be a measurable set, and $\varepsilon>0$. Then, 
+\begin{enumerate}
+    \item $\exists$ an open set $O$ such that $E \subset O$ and $m(O-E)\leq \varepsilon$
+    \item $\exists $ closed set $F$ such that $F \subset E$ and $m(E-F)\leq \varepsilon$
+    \item if $m(E)<\infty$, then there exists a compact set $K\subset E$ such that $m(E-K)\leq \varepsilon$
+    \item if $m(E)<\infty$, then there exists $F=\cup_{i=1}^N Q_i$, a union of almost disjoint closed sets, such that $m(E-F)+m(F-E)<\varepsilon$
+\end{enumerate}}{(1) Obvious from the definition of measurability.
+\\\\ (2) Apply definition of measurability for $E^c$ to get an open set $E^c\subseteq F^c$ such that $m(F^c-E^c)=m(E-F)\leq \varepsilon$. The requisite closed set is $F$.
+\\\\ (3) Let $F$ be such that $m(E-F)<\varepsilon/2$ where $F$ is a closed set. Consider $Q_1 \subset Q_2 \subset Q_3 \cdots$. $F=\cup_i F \cap Q_i$ where each $F \cap Q_i$ are compact. $F$ is contained in $E$, implying $m(F)=\lim_{n\to \infty}m(F \cap Q_i)<\infty$ so the limit exists. For large enough $N$, we have $m(F)-m(F \cap Q_N)<\varepsilon/2$. We then have $m(E)-m(F)+m(F)-m(F \cap Q_N)=m(E-F)+m(F)-m(F \cap Q_N)=m(E-F\cap Q_N) \leq \varepsilon$.
+\\\\ (4) Let $m(E)<\infty$. There exists almost dijoint closed cubes $Q_i$ such that $\sum_{i=1}^{\infty}|Q_i|\leq m(E)+\varepsilon/2$. This series converges, so we take that $N$ such that $\sum_{i=N+1}^{\infty}|Q_i| < \varepsilon/2$, and define $F=\cup_{i=1}^N Q_i$. Note that $E-F$ is fully contained in $\cup_{i=N+1}^{\infty}Q_i$, so $m(E-F)$ is bounded by $\varepsilon/2$. Note that $F-E=\cup_{i=1}^N Q_i-E \subset \cup_{i=1}^{\infty} Q_i-E$, which means that $m(F-E)\leq m(\cup_i Q_i -E) \leq \varepsilon/2$, therefore, the sum $m(E\triangle F)=m(E-F \cup F-E)=m(E-F)+m(F-E)\leq \varepsilon$}
+\subsubsection{Invariance properties of the Lebesgue Measure}
+\defn{$E+h$ translate, $h \in \RR^d$}{$$E+h:=\{x+h:x\in E\}$$}
+\defn{$\delta E$ dialation, $\delta \in \RR$}{$$\delta E:=\{\delta x : x \in E\}$$}
+
+\thmp{If $Q$ is a cube, $Q+h$ is also a cube, and $|Q|=|Q+h|$}{Trivial definition chasing.}
+\thmp{If $B$ is a ball, then $B+h$ is also a ball, of the same radius. Moreover, $B_r(x)+h=B_r(x+h)$}{Also trivial}
+\thmp{If $O$ is an open set, so is $O+h$, and their measures are the same}{First show that if $O$ is a union of balls $B_i$ thn $O+h$ is a union of balls $B_i+h$. Moreover, if $O$ is a disjoint (almost) union of closed cubes $\cup_i Q_i$, then $O+h=\cup_i (Q_i+h)$. We then can easily see that their measures are the same from additivity. }
+
+\thmp{$m_*(E)=m_*(E+h)$}{Given any open set $O$ covering $E$, there exists an open set $O+h$ covering $E+h$, with the same measures. The reverse direction too is possible. So $\inf\{m_*(O):E \subset O\}=\inf\{m_*(O'):E+h \subseteq O'+h\}$ which concludes equality.}
+
+\thmp{If $E$ is measurable, so is $E+h$ and their measures are the same.}{Given $\varepsilon>0$, there exists $E \subset O$ open such that $m_*(O-E)\leq \varepsilon$. Consider $O+h$, which covers $E+h$. Note that $(O+h-E+h) \subseteq (O-E)+h$ so $m_*(O+h-E+h)\leq \varepsilon$. We are done with measurability, and equality comes from $m_*$. }
+Using similar techniques, one can show:
+\begin{theorem}
+    $m(\delta E)=\delta ^d m(E)$
+\end{theorem}
+\subsection{Sigma Algebras}
+\defn{Sigma algebra $\Sigma(\Omega)$ of a set $\Omega$}{A collection of subsets $\Sigma(\Omega)$ of $\Omega$ is a sigma algebra if:
+\begin{enumerate}
+    \item $\varnothing , \Omega \in \Sigma$
+    \item $E_1,E_2 \cdots  \in \Sigma \implies \cup_i E_i \in \Sigma$
+    \item $E \in \Sigma \implies E^c \in \Sigma$
+\end{enumerate}}
+
+\defn{Borel Sigma Algebra}{Let $K$ be the collection of all open sets (in any topology), then the Borel Sigma Algebra, denoted $\BB_{\Omega}$ is the intersection of all sigma algebras containing $K$}
+\begin{remark}
+    The set of all lebesgue measurable subsets of $\RR^d$ forms a sigma algebra. Since open sets are measurable, the borel sigma algebra is sitting inside the lebesgue sigma algebra.
+
+\end{remark}
+\defn{Measure}{Let $(\Omega,\Sigma(\Omega))$ be a set and a sigma algebra (aka a double). A function $\mu:\Sigma(\Omega)\to \RR \cup \{+\infty\}$ is said to be a \emph{measure} if:
+\begin{enumerate}
+    \item $\mu(E)\geq 0$ for all $E \in \Sigma(\Omega)$
+    \item $\mu(\varnothing)=0$
+    \item $\mu(\cup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty} \mu(E_i)$ for a collection of disjoint subsets of $\Sigma(\Omega)$ \end{enumerate}}
+
+\thmp{\textbf{(Limit Exchange)} Let $E_i \uparrow E$, then $\mu(E)=\lim_{i\to \infty}\mu(E_i)$. Likewise, if $E_i \downarrow E$ with $\mu(E_1)<\infty$, then $\mu(E)=\lim_{i\to \infty} \mu(E_i)$ }{The proof follows similarly to the case where $\Sigma$ was lebesgue and $Omega$ was $\RR^d$ (see above). }
+
+\thmp{Limit exchange + finite additivity is equivalent to countable additivity (given other axioms for a measure stay fixed).}{$\impliedby$ Countable additivity takes care of finite additivity, and previous theorem gives limit exchange.
+\\\\ $\implies$ Let $E_1,E_2 \cdots $ be disjoint sets in the sigma algebra. We have $\mu(\cup_{i=1}^n E_i)=\sum_{i=1}^n \mu(E_i)$. Let $Q_1=E_1, Q_2=E_1\cup E_2, Q_3=E_1\cup E_2 \cup E_3$ and so on. We have $Q_i \uparrow$. $\cup_{i=1}^n Q_i=\cup_{i=1 }^n E_i$. $\mu(\cup_{i=1}^n Q_i)=\sum_{i=1}^n \mu(E_i)$. $\mu(\cup_i E_i)=\mu(\cup_{i=1}^{\infty} Q_i)=\lim_{n \to \infty} \mu(Q_i)=\sum_{i=1}^{\infty}\mu(E_i)$}
+
+\thmp{A set $E\subseteq \RR^d$ is measurable iff \begin{enumerate}
+    \item $E$ differs from a $G_{\delta}$ set by a set of zero measure
+    \item $E$ differes from a $F_{\sigma}$ set by a set of zero measure 
+\end{enumerate}}{If measurable, then obviously we have for every $n \in \NN$ such that $m(O_n-E)\leq 1/n$ so $\cap_n O_n$ is our desired $G_{\delta}$ set. Likewise, if we perform the same for $E^c$ and get $\cap_n O'_n$ there, then $\cup_n O'^c_n$ is our desired $F_{\sigma} $ set. 
+\\\\ If we have $E$ differ from a $G_{\delta}$ set by a set of measure 0, we mean that $E-G$ and $G-E$ are individually measure 0. Note that $E\cap G=G-(G-E)$ which means $E \cap G$ is measurable. Now, $E \cap G \cup (E-G)=E$, which means $E$ is measurable. Same argument applies to an $F_{\sigma}$ set $F$. }
+
+\subsection{A non measurable set in $[0,1]$}
+Define the equivalence relation $x \sim y$ if and only if $x-y \in \QQ$. Let $\epsilon_{\alpha}$ be the equivalence classes, so that $[0,1]=\cup_{\alpha} \epsilon_{\alpha}$. Pick $x_{\alpha}\in \epsilon_{\alpha}$ (by axiom of choice). Take these $x_{\alpha}$ to make a set $\N$.
+\\\\ Let $\{r_k\}$ be an enumeration of rationals in $[-1,1]$. Define $N_k=N+r_k$ (translate). Note that, if $N_l\cap N_k\neq \varnothing$, then $N+r_l\cap N+r_k \neq \varnothing$ or there exists $x=x_{\alpha}+r_l=x_{\beta}+r_k$, but that means $x_{\alpha}\sim x_{\beta}$, only possible if $\alpha=\beta$ but contradiction to the assumption that $l \neq k$, so for different rationals, $N_k$ is disjoint to $N_j$. Note that $[0,1]\subseteq \cup_{i=1}^{\infty}N_i \subseteq [-1,2]$. Assuming $N$ is measurable, it tells us $N_k $ each are measurable, and yields $1 \leq \sum_{i=1}^{\infty} m(N_i)\leq 4$ but $m(N_k)=m(N)$, which gives us a contradiction. 
+\\\\ This set is called the \textbf{Vitali Set}. 
+
+\section{Measuring Functions}
+\defn{Measurable Function}{A function $f:\RR^d \to \RR\cup \{-\infty,\infty\}$ is said to be \emph{measurable} if $f^{-1}([-\infty,a))$ is measurable in $\RR^d$.}
+\begin{remark}
+    Note that, in the above definition, it is easy to see that it is equivalent to saying any function is Lebesgue measurable if it inverse maps borel sets to lebesgue sets. 
+    \\\\ A borel measurable function on the other hand, inverse maps borel sets to borel sets.
+\end{remark} 
+\end{document}

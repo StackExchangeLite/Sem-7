@@ -1,0 +1,125 @@
+\documentclass[A4,12pt,twoside]{book}
+\usepackage{amd}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{epigraph}
+\graphicspath{{Images/}{../Images/}}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{mathrsfs}
+\usepackage{framed}
+\usepackage{frame}
+\usepackage{quiver}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\renewenvironment{leftbar}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{black}\vrule width 2pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{white}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+\newcommand{\thmp}[2]{
+\begin{theorem}
+    #1   
+\end{theorem}
+ 
+\begin{Proof}\leftbar
+    #2
+\endleftbar\end{Proof}
+
+}
+
+\newcommand{\lemp}[2]{
+\begin{lemma}
+    #1   
+\end{lemma}
+ 
+\begin{Proof}\leftbar
+    #2
+\endleftbar\end{Proof}
+
+}
+
+\newcommand{\defn}[2]{
+\begin{definition}
+    \textbf{(#1)}
+    \
+    #2
+    
+\end{definition}
+
+}
+\newenvironment{Proof}[1][Proof]
+  {\proof[#1]\leftskip=0.5cm }
+  {\endproof}
+
+\newcommand{\prob}[3]{\textbf{Problem}
+\textbf{#1:}\
+#2
+\\\\ \textbf{Solution:} 
+\leftbar #3 \leftskip=0.5cm \hfill\qedsymbol
+\endleftbar
+}
+
+
+\title{Topology (Main Source: Munkres)}
+\author{Tharun Naagesh}
+
+\begin{document}
+\maketitle
+
+% %--------------------------------------------------------------------------
+% %         First pages 
+% %--------------------------------------------------------------------------
+\newgeometry{top=8cm,bottom=.5in,left=2cm,right=2cm}
+\restoregeometry
+
+\tableofcontents
+
+% %--------------------------------------------------------------------------
+% %         Core of the document 
+% %--------------------------------------------------------------------------
+\part{Point-Set Topology}
+\subfile{ch1.tex}
+\subfile{}
+\subfile{}
+
+
+
+%\part{Second part}
+%\subfile{}
+
+
+%\part{Third part}
+%\subfile{}
+
+
+
+
+% %--------------------------------------------------------------------------
+% %         Bibliographie 
+% %--------------------------------------------------------------------------
+%\nocite{*} % to cite evey things, else cite each on using : \cite{ifrs17}. 
+%\printbibliography %to print bibliographie
+
+
+
+\end{document}
