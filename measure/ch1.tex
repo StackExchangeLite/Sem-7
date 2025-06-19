@@ -156,6 +156,113 @@ Define the equivalence relation $x \sim y$ if and only if $x-y \in \QQ$. Let $\e
 \defn{Measurable Function}{A function $f:\RR^d \to \RR\cup \{-\infty,\infty\}$ is said to be \emph{measurable} if $f^{-1}([-\infty,a))$ is measurable in $\RR^d$.}
 \begin{remark}
     Note that, in the above definition, it is easy to see that it is equivalent to saying any function is Lebesgue measurable if it inverse maps borel sets to lebesgue sets. 
-    \\\\ A borel measurable function on the other hand, inverse maps borel sets to borel sets.
+    \\ A borel measurable function on the other hand, inverse maps borel sets to borel sets.
 \end{remark} 
+\defn{Characteristic function of a set $E \subseteq \RR^d$}{$$\chi_{E}(x):=\begin{cases}
+ 1 \ :x \in E \\ 0 \ :\text{else}   
+\end{cases}$$}
+We now define the elementary functions that make up Riemann theory:
+\defn{Step function}{$f$ is a step function if there exists $N \in \NN$, real numbers $\{a_i\}_{1}^N$ and $N$ rectangles $R_i$ such that $f(x)=\sum_{i=1}^N a_i \chi_{R_i}(x)$}
+The elementary functions that make up lebesgue theory on the other hand, are:
+
+\defn{Simple functions}{$f$ is a simple function if there exists $N \in \NN$, $N$ reals $\{a_i\}$ and $N$ measurable sets $\{E_i\}$ such that $f=\sum_{i=1}^N a_i \chi_{E_i}(x)$}
+
+\thmp{Equivalent criteria for measurability of a function:
+\begin{enumerate}
+    \item $f^{-1}([-\infty,a)) $ is measurable
+    \item $f^{-1}([-\infty, a])$ is measurable
+    \item $f^{-1}(a,\infty]$ is measurable
+    \item $f^{-1}[a,\infty]$ is measurable
+\end{enumerate}}{These are rather trivial, given that $[-\infty,a]=\cap_{r_k}[-\infty,a+r_k)$ and $f^{-1}(I^c)=(f^{-1}(I))^c$}
+\begin{lemma}
+    If $f$ is measurable, then $-f$ is measurable.
+\end{lemma}
+\thmp{If $f:\RR^d \to \RR\cup\{-\infty,\infty\}$ such that  $f^{-1}(-\infty)$ and $f^{-1}(\infty)$ are measurable, then $f$ is measurable if and only if $f^{-1}(O)$, for all open sets $O\subset \RR\cup \{-\infty,\infty\}$ (order topology).}{$\implies)$ Let $f$ be measurable. Then $f^{-1}(a,b)$ is measurable, and $f^{-1}[-\infty,a)$ and $f^{-1}(a,\infty]$ is also measurable for all $a$. The basis sets are inverse mapped to measurable sets.
+\\\\ $\impliedby)$ Let $f^{-1}(O)$ be measurable for all open sets $O$. This means $f^{-1}[-\infty,a)$ is measurable for all finite $a$, as is $f^{-1}[-\infty,a]$. For $f^{-1}[-\infty,\infty)=f^{-1}(\cup_i[-\infty,i])$ }
+
+\thmp{If $f$ is continuous, then $f$ is measurable. If $f$ is finite valued and measurable, and $\phi:\RR\to\RR$ is continuous, then $\phi \circ f$ is measurable.}{(1) Is obvious
+\\\\ $(\phi \circ f)^{-1}(-\infty,a)=f^{-1}(\text{an open set})$ which is measurable. }
+
+\defn{Almost everywhere}{We say a property $P(x)$ holds almost everywhere on a measure space $x\in\Omega$ if the set $E \subseteq \Omega:=\{x \in \Omega: P(x)\text{ is not true}\}$ is a set of measure $0$.
+\\\\ For example, we say $f \equiv g \ a.e.$ if $\{x: f(x)\neq g(x)\}$ is a set of measure 0.}
+
+\thmp{Let $f_n:E\to \RR\cup\{\pm \infty\}$ be a sequence of measurable functions defined on a measurable set $E$. Then the following functions are measurable: 
+\begin{enumerate}
+    \item $\sup_n f_n(x)$
+    \item $\inf_n f_n(x)$
+    \item $\limsup_n f_n(x)$
+    \item $\liminf_n f_n(x)$
+\end{enumerate}
+}{(1) Note that $\{x: \sup_n f_n(x)>a\}$ is the same as $\cup_{n} \{x: f_n(x)>a\}$. To see this, note that if $x$ is such that $\sup_n f_n(x)>a$, that means there is some $n$ so that $f_n(x)>a$. The other direction is just as trivial.
+\\\\ (2) $\inf_n f_n(x)=-\sup_n -f_n(x) $.
+\\\\ (3) and (4) follow from $\limsup_n f_n(x):= \inf_{n \in \NN} (\sup_{i\geq n+1}f_i(x))$ and $\liminf_n f_n(x):= \sup_{n \in \NN} (\inf_{i\geq n+1}f_i(x))$}
+\thmp{If $\{f_n:E \to \RR\cup\{\pm \infty\}\}$ is a sequence of measurable functions such that $E$ is measurable and $f_n\to f$ pointwise, then $f$ is measurable.}{$f(x)=\lim_{n\to\infty} f_n(x)=\limsup_n f_n(x)=\liminf_n f_n(x)$.}
+
+\thmp{If $f$ and $g$ are measurable, then $f^k(x):=f(x)^k$ is measurable, $f+g$ is measurable, and $fg$ is measurable.}{If $k$ is odd, $\{f^k>a\}=\{f>a^{1/k}\}$. If $k$ is even, $\{f^k>a\}$ for negative $a$ is just whole reals, so we take positive $a$, $\{f^k>a\}=\{f>a^{1/k}\}\cup\{f<-a^{1/k}\}$. Measurable. 
+\\\\ $\{f+g>a\}=\cup_{r_k} \{f>r_k\}\cap \{g>a-r_k\}$ for rationals $r_k$. Proof is that, if $f+g>a,$ then $f+g>r_k>a$, which yields the result one side. $f>r_k$ and $g>a-r_k$ trivially gives the equality. 
+\\\\ $fg=\frac{1}{4}((f+g)^2-(f-g)^2)$}
+
+\thmp{Let $g$ be a measurable function, and $$f\equiv g \ a.e.$$ Then $f$ is measurable.}{$\{f<a\}=\{f<a:f\equiv g\}\cup\{f<a:f \not\equiv g\}$. Note that $\{f<a:f\not\equiv g\}$ is a measure 0 set. So the result holds.}
+\subsection{Approximating Measurable Functions}
+
+\thmp{Let $f:\RR^d\to \RR\cup\{+\infty\}$ be measurable and non negative. There exists a sequence of simple functions $\varphi_k$ such that $\varphi_k\leq \varphi_{k+1}$ and $$\varphi_k \to f \ \text{pointwise}$$}{
+\textbf{Some commentary:}
+\\ We would like to subdivide the range of $f$ and inverse map these to get measurable sets on $\RR^d$, with which we can then make characteristic functions and then simple functions, by taking a sum of the kind: $$\sum_{i=1}^K \inf\{f(x):x \in E_i\} \chi_{E_i} $$ where $E_i$ is one of the measurable sets we get from inverse maps. 
+\\\\ But the issue with this is that, the range may not be a bounded set. To mitigate this issue, we create a sequence of bounded functions that converge pointwise to $f,$ and then approximate these functions, and take the diagonal sequence.
+\\\\ \textbf{End of commentary.}
+\\\\ Let $N$ be a natural number and $Q_N$ be the $N$ sided cube centered at origin. $$F_N:=\begin{cases}
+    f(x)\ :x \in Q_N, f(x)<N \\ N\ :x \in Q_N, f(x) \geq N \\ 0 \ \text{else}
+
+\end{cases}$$ 
+$F_N\to f$ pointwise as $N \to \infty$.
+The range of $F_N$ is $[0,N]$. For $k \in \NN$, subdivide $[0,N]$ into $2^k N$ parts, i.e, subintervals $[0,1/2^k],[1/2^k,2/2^k],\cdots [l/2^k,(l+1)/2^k] \cdots [N-1/2^k,N]$. Now take the inverse image of each of these, to get measurable sets $$E_{l,N,2^k}=F_N^{-1}[l/2^k,(l+1)/2^k] $$
+
+Define $$\phi_{N,2^k}=\sum_l \frac{l}{2^k} \chi_{E_{l,N,2^k}}=\sum_l \frac{l}{2^k} \chi_{F_N^{-1}[l/2^k,(l+1)/2^k]}$$
+
+Note that, $|F_N(x)-\phi_{N,2^k}(x)|\leq 1/2^k$ for all $x$. So $\phi_{N,2^k} \to F_N$ (for fixed $N$) uniformly.
+
+The sequence $\phi_{2^k,2^k}$ ($N=2^k$) is monotonic non decreasing by virtue of the subdivision becoming finer, and $\phi_{2^k}:=\phi_{2^k,2^k}\to f$ pointwise. Hence, we are done.
+
+}
+
+\begin{remark} (\textbf{Previous result strenghtens to "uniform convergence" if $f$ were bounded})
+    Note that, in the previous case, if $f$ were bounded, we would get that the convergence $\phi_k\to f$ would be uniform, from the fact that $\phi_{N,2^k}\to F_N$ was uniform. We needn't have to "pass" to a sequence of bounded functions that approximate $f$ in the first place.
+\end{remark}
+
+\thmp{If $f$ is measurable on $\RR^d$, there exists a sequence of simple functions $\phi_k$ such that $\phi_k \to f$ pointwise and $|\phi_k|\leq |\phi_{k+1}|$.}{Let $f^+(x):=\max(f(x),0)$ and $f^-(x):=\max(-f(x),0)$. Note that $f\equiv f^+-f^-$. Both $f^+$ and $f^-$ are non decreasing. We can make $$F^+_N:=\begin{cases}
+    f^+(x) \ :x \in Q_N, f^+(x)<N \\
+    N \ :x \in Q_N, f^+(x)\geq N\\
+    0\ \text{else}
+\end{cases}$$ 
+and 
+$$F^-_N:=\begin{cases}
+    f^-(x) \ :x \in Q_N, f^-(x)<N \\
+    N \ :x \in Q_N, f^-(x)\geq N\\
+    0\ \text{else}
+\end{cases}$$
+We note the following property of $f^+$ and $f^-$, which is that, whenever $f^+$ is positive, $f^-$ is 0, and likewise whenever $f^-$ is positive, $f^+$ is 0. Likewise, since $F_N^+$ and $F_N^-$ are just constraints on $f^+$ and $f^-$, they too obey the same property. 
+
+We then define $$\phi^+_{N,2^k}(x)=\sum_l l/2^k \chi_{(F_N^+)^{-1}(l/2^k,l+1/2^k]}(x) $$
+and 
+$$\phi^-_{N,2^k}(x)=\sum_l l/2^k \chi_{(F_N^-)^{-1}(l/2^k,l+1/2^k]}(x) $$
+
+$\phi^{\pm}_{N,2^k}\to F_N^{\pm}$ respectively (uniform).
+Note that, if $\phi^+_{N,2^k}$ is positive, that means that for some $l$, $F_N^{+}\in (l/2^k],$ implying that $F_N^-$ is zero. Therefore, the same property that $f$ follows, is followed by $\phi^+_{N,2^k}$ and $\phi^-_{N,2^k}$. For such functions, note that $|f|=f^++f^-$. Therefore, $|\phi_{k}|=|\phi_{2^k,2^k}|=|\phi^+_{2^k,2^k}-\phi^-_{2^k,2^k}|=\phi^+_{2^k,2^k}+\phi^{-}_{2^k,2^k}$. We are done.
+}
+\thmp{Let $f$ be a measurable function on $\RR^d$. There exists a sequence of \textbf{step functions} $\phi_k$ such that $\phi_k \to f$ a.e. }{It suffices to show that $\chi_E$ for a measurable set $E$ of finite measure can be approximated by step functions, from the previous theorem (We took the simple function's characterists to be from finite measure sets). For a given $k$, there exists $F_k=\cup_{i=1}^{n_k} Q_{i,k}$ a closed set that is a union of almost disjoint closed cubes $Q_{i,k}$ such that $m(E\triangle F_k)\leq 1/2(2^k)$.. Take smaller cubes $S_{i,k}\subset Q_{i,k}$ so that they are closed, of very close volume to $Q_{i,k}$ but strictly inside $Q_{i,k}$. In such a case, we then have a disjoint collection of finite closed cubes such that $m(E\triangle G_k)\leq 1/2^k$. We then consider $$\phi_k:=\chi_{G_k}=\sum_{i,k} \chi_{S_{i,k}}$$ This function is the same as $\chi_{E}$ everywhere except a set $E \triangle G_k$ whose measure is $m(E \triangle G_k)<1/2^k$. Let $F_k=\cup_{k+1}^{\infty}E\triangle G_i$ and $F=\cap_k F_k$. Note that $m(F)\leq m(F_K)\leq \sum_{K+1}^{\infty}1/2^k \leq 1/2^{K}$. So $m(F)=0$. On the comlpement of $F$, i.e, $\cup_k F_k^c$ which is $\cup_k(\cap_{k+1}^{\infty}(E\triangle G_i)^c)$ on which convergence happens.   }
+
+\subsection{Littlewood's Three Principles}
+\begin{enumerate}
+\item Every measurable set is "almost" a union of finite intervals.
+\item Every measurable function is "almost" continuous.
+\item Every sequence of measurable functions that converges pointwise, "almost" does so uniformly.
+  
+\end{enumerate}
+
+The precise formulation of these are:
+\begin{theorem}
+    {Given $\varepsilon>0$ and a measurable set $E$ of finite measure, we can find $F=\cup_{i=1}^K Q_i$ a union of closed cubes such that $m(E\triangle F)\leq \varepsilon$}
+\end{theorem}
+\thmp{\textbf{(Egorov)} Let $f_k$ be a sequence of measurable functions defined on a measurable set $E$ ($m(E)<\infty$), converging to $f$ pointwise. Given $\varepsilon>0$, there exists a closed set $A_{\varepsilon}\subset E$ such that $m(E-A_{\varepsilon})<\varepsilon$ and $f_k\to f$ uniformly on $A_{\varepsilon}$.}{Define $$E^n_k:=\{x\in E:|f_j(x)-f(x)|<1/n \ \forall \ j \geq k\}$$ These sets are measurable (since $|\cdot|$ is measurable and differences are measurable). Note that for a fixed $n$, $E^n_{k}\subseteq E^n_{k+1}$ and these sets ultimately converge to $E$ itself since for any $x$ in $E$, and for a given $1/n$ there exists $k$ such that $|f_j(x)-f(x)|<1/n$ for all $j>k$. From limit exchange, $m(E)=\lim_{k \to \infty} m(E^n_k)<\infty$. Therefore, for any $n,$ there exists $n_k$ so that $m(E)-m(E^n_{k_n})<1/2^n$. We then have, $$|f_j(x)-f(x)|<1/n \text{ whenever } j>k_n \text{ and }x \in E^n_{k_n}$$ }
+
 \end{document}
