@@ -277,4 +277,30 @@ We look at $$F_N=\cup_{N}^{\infty}E_n \text{ such that }m(E-F_N)=m(E-\cup_{N}^{\
 Let $G_N=E-F_N$, our set of consideration for a given $\varepsilon$. We then have $m(E-G_N)\leq \varepsilon/2$, and on $G_N$, which is $E-F_N$, all $f_n$ after $N$ are continuous. From Egorov, we have a set $A_{\varepsilon/2}\subset G_N$ so that $m(G_N-A_{\varepsilon/2})\leq \varepsilon/2$ and $f_n$ beyond $N$ are uniformly convergent to $f$. $m(E-A_{\varepsilon/2})=m(E-G_N)+m(G_N-A_{\varepsilon/2})\leq \varepsilon$. So for a given $\varepsilon>0$, we have a closed set $A_{\varepsilon/2}$ so that $f_n$ beyond a certain $N_{\varepsilon}$ converges uniformly on $A_{\varepsilon/2}$, and $f_n$ are all continuous on $A_{\varepsilon/2}$. Therefore, on $A_{\varepsilon/2}$ the uniform limit $f$ of the sequence of continuous functions is continuous on $A_{\varepsilon}$. \textbf{(See next Lemma)} 
 }
 \lemp{\textbf{(Throwaway)} If $f_n:(X,d)\to \RR$ is a sequence of continuous functions such that $f_n \to f$ uniformly, then $f$ is continuous.}{Let $x\in X$ and $\varepsilon>$. We want a $\delta>0$ such that $|f(x)-f(z)|<\varepsilon$ whenever $z \in B_{\delta}(x)$. Note that $|f_n(x)-f(x)|<\varepsilon/3$ and $|f_n(z)-f(z)|<\varepsilon/3$ whenever $n \geq N_{\varepsilon}$, and there is a $\delta_0$ so that $|f_n(x)-f_n(z)|<\varepsilon/3$ whenever $z\in B_{\delta}(x)$. Consider $|f(x)-f(z)|=|f(x)-f_n(x)+f_n(x)-f_n(z)+f_n(z)-f(z)|\leq |f_n(x)-f(x)|+|f_n(x)-f_n(z)|+|f_n(z)-f(z)|\leq \varepsilon$ whenever $n \geq N_{\varepsilon}$, and $z \in B_{\delta}(x)$. We have found our $\delta$. Hence, $f$ is continuous. }
+\lemp{(\textbf{Borel-Cantelli Lemma}) Let $E_1,E_2,\cdots $ be a collection of measurable sets such that $$\sum_{i=1}^{\infty}m(E_i)<\infty $$ then $\limsup(E_i):=\cap_{n \in \NN}\cup_{i\geq n}E_i$ is measurable and is of measure 0.}{We know that $m(E_i)\to 0$ from convergence of the series. Since the series converges, we can make $\sum_{i=N+1}^{\infty} m(E_i)$ arbitrarily small for large enough $N$. Therefore, for a given $\varepsilon, $ there exists $N$ such that $$m(\cup_{i=N+1}^{\infty}E_i)\leq \sum_{i=N+1}^{\infty}m(E_i)\leq \varepsilon $$
+Since the $\limsup$ is smaller than the left side above for every $N$, we have that $m(\limsup(E_i))=0$.}
+
+
+\section{Integration}
+\subsection{Simple Functions}
+\defn{Canonical form of a simple function}{We say $\phi$, a simple function, is in canonical form if $$ \phi=\sum_{i=1}^N a_i \chi_{E_i}$$ where $\{a_i\}$ are distinct constants and $\{E_i\}$ are disjoint. }
+\lemp{Canonical form for a function always exists, and is unique.}{Let $c_1,c_2 \cdots c_r$ be the finite values $\phi$ takes. Let $E_i:=\{x\in \RR^d: \phi(x)=c_i\}$. We then can conclude $\phi=\sum_{i=1}^N c_i \chi_{E_i}$.
+\\ As for uniqueness, if a function were to have two different canonical forms, it is easy to see why they would necessarily have to disagree on some point on $\RR^d$. }
+\defn{Lebesgue integral of a simple function}{If $\varphi$ is a simple function \emph{in canonical form}, then $$\int_{\RR^d} \varphi=\int_{\RR^d} (\sum_{i=1}^N a_i \chi_{E_i}):=\sum_{i=1}^N a_i m(E_i)$$}
+\thmp{If $\varphi$ is a simple function, the following holds:
+\begin{enumerate}
+    \item If $\varphi=\sum_{i=1}^N a_i \chi_{E_i}$, then $\int \varphi=\sum_{i=1}^N a_i m(E_i)$ regardless of whether the representation is canonical or not.
+    \item If $\varphi$ and $\psi$ are two simple functions, then $\int a\varphi +b\psi=a\int \varphi +b \int \psi$.
+    \item If $f\leq g$ where $f$ and $g$ are simple functions, then $\int f \leq \int g$.
+    \item $|\int f| \leq \int |f|$ for simple function $f$.
+    \item If $E$ and $F$ are disjoint measurable sets, then $\int_{E \cup F} f=\int_E f+\int_F f$.
+\end{enumerate}}{(1) First, let us assume that $E_i$ are all disjoint, but $a_i$ may not be distinct in $\phi=\sum_{i=1}^N a_i \chi_{E_i}$. Let $E_0:=\{a_n: n\leq N\}$ as a set (distinct elements). Consider $a \in E_0$, and let $E_a$ be $\cup E_i$ such that, that particular $a$ corresponds to $E_i$. We then see that $\sum_{a \in E_0} a E_a$ is the canonical form of $\phi$, and $\int \phi=\sum_{a \in E_0} a m(E_a)=\sum_{a \in E_0} a (\sum_{\text{times }a\text{ occurs as }a_i }m(E_i) )$ which clearly is $\sum_{i=1}^N a_i m(E_i)$. 
+\\\\ Now, let us assume that $E_i$ need not be disjoint. We can find disjoint $E'_j$-s such that $\cup_{j=1}^M E'_j=\cup_{i=1}^N E_i$, and $E_i=\cup_{j: E'_j \subset E_i}E'_j$. Let $a'_j:=\sum_{k: E'_j \subseteq E_k}a_k$. Therefore, we can see that $\phi=\sum_{j}a'_j \chi_{E'_j}$ (Since $\sum_{j=1}^M a'_j \chi_{E'_j}=\sum_{j=1}^M (\sum_{k: E'_j \subset E_k}a_k)\chi_{E'_j}$) where $E'_j$ are disjoint. $\int \phi=\sum_{i=1}^M \sum_{(k:E'_j\subset E_k)}a_k m(E'_j)=\sum_{i=1}^N a_i m(E_i)$. 
+\\\\ (2) If $f=\sum_i a_i \chi_{E_i}$ and $g=\sum_i b_i \chi_{F_i}$, then we note that $af+bg$ is also a simple function, whence this property falls immediately.
+\\\\ (3) If $f \leq g$, $g-f\geq 0$ and $g-f$ is a simple function which is nonnegative, which means their canonical forms have nonnegative coefficients. Hence, $\int (g-f)=\int g -\int f \geq 0$
+\\\\ (4) Let $f=\sum_i a_i \chi_{E_i}$ in canonical form. Hence, $|f|=\sum_i |a_i| \chi_{E_i}$. $|\int f|=|\sum_i a_i m(E_i)|\leq \sum_i |a_i|m(E_i)=\int |f|$
+\\\\ (5) $\int_{E\cup F} f$ for disjoint $E$ and $F$ is $\int f \chi_{E\cup F}=\int f \chi_E+\int f\chi_F$ which yields the result. 
+
+}
+\lemp{If $f$ and $g$ agree a.e. and they are simple functions, then $\int f=\int g$.}{To see this, note that $f$ and $g$ possibly disagree on a set $E$ of measure $0$. Which means $f-g$ is zero almost everywhere. i.e, $f-g=\sum_{i=1}^N a_i \chi_{E_i}$ where each $E_i$ are disjoint and measure 0. Therefore, $\int f-g=0$ or $\int f=\int g$. }
 \end{document}
