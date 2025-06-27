@@ -303,4 +303,30 @@ Since the $\limsup$ is smaller than the left side above for every $N$, we have t
 
 }
 \lemp{If $f$ and $g$ agree a.e. and they are simple functions, then $\int f=\int g$.}{To see this, note that $f$ and $g$ possibly disagree on a set $E$ of measure $0$. Which means $f-g$ is zero almost everywhere. i.e, $f-g=\sum_{i=1}^N a_i \chi_{E_i}$ where each $E_i$ are disjoint and measure 0. Therefore, $\int f-g=0$ or $\int f=\int g$. }
+
+\subsection{Bounded functions supported by sets of finite measure}
+\defn{Support of a measurable function $\mathbf{f}$}{$$supp(f):=\{x \in \RR^d: f(x) \neq 0\}$$}
+Since $f$ is measurable, $f^{-1}(\RR\cup\{\pm \infty\}-\{0\})$, or rather, the support, is also measurable. 
+\thmp{
+    If $f$ is a bounded function (bounded by $M$) which is finitely supported by $E$, then there exists a sequence of simple functions $\phi_k$, each of which is bounded by $M$, and is supported in $E$, and $$\phi_k \to f $$
+}{$\phi_k:=\sum_l l/2^k \chi_{f^{-1}(l/2^k,l+1/2^k]} $ from an earlier proof. Note that there, we could generate a sequence of functions such that $|\phi_k|\leq |\phi_{k+1}|$ and $\phi_k \to f$ pointwise. Therefore, all $\phi_k$ are uniformly bounded by $M$ and converge pointwise to $f$. Note that outside $E$, $f$ is $0$, and $|\phi_k|\leq |\phi_{k+1}| \cdots$, and on $x \in E^c$, $|\phi_k(x)|\to 0$ which means that $|\phi_k(x)|=0$, therefore, $\phi_k$ are supported inside $E$. }
+\lemp{Let $f$ be a function that is finitely supported on $E$ and bounded by $M$. Let $\phi_k$ be a sequence of simple functions, finitely supported on $E$ and uniformly bounded by $N$, and that $$\phi_k(x) \to f(x) \ a.e. $$ then, \begin{enumerate}
+    \item $\lim_{n\to \infty} \int \phi_n $ exists
+    \item If $f \equiv 0 \ a.e.$ then $\lim_{n \to \infty} \int \phi_k=0$
+\end{enumerate}}{From Egorov, for a given $\varepsilon$, there exists $A_{\epsilon}\subseteq E$ such that $m(E-A_{\varepsilon})<\varepsilon$ and on $A_{\varepsilon}$, $\phi \to f$ is uniform. $|\int \phi_n-\phi_m|\leq \int_{A_{\varepsilon}} |\phi_n-\phi_m|+\int_{E-A_{\varepsilon}}|\phi_n-\phi_m|\leq  $ $\int_{A_{\varepsilon}}|\phi_n-\phi_m|+2M\varepsilon $ (since $|\phi_m-\phi_n|$ is bounded by $2M$). This is in turn less than $$m(E)\varepsilon+2M\varepsilon $$ for large enough $m,n$ since convergence is uniform in $A_{\varepsilon}$. Hence, we are done.
+\\\\ For the 2nd part, note that $|\int \phi_k|\leq \int |\phi_k|=\int_{A_{\varepsilon}}|\phi_k|+\int_{E-A_{\varepsilon}}|\phi_k|$ which is less than or equal to $\varepsilon m(E)+2M\varepsilon$, but since $m(E)=0$, we have the requisite result.  }
+\defn{Lebesgue integral for bonded funtions on finite measure support}{Let $f$ be bounded by $M$ and $m(supp(f)=E)<\infty$. If $phi_k$ is a sequence of simple functions, bounded by $M$, supported on $E$, and $\phi_k \to f\ a.e.$ Then $$\int f:=\lim_{n\to\infty}\int\phi_n$$ }
+\lemp{This definition makes sense, i.e. if $\phi_i$ and $\psi_i$ are two sequences of simple functions converging to $f$, supported on $E$ and bounded by $M$, then $$\lim_{n\to \infty}\int\phi_n=\lim_{n\to\infty}\int\psi_n $$}{We know $\phi_n \to f$ and $\psi_n \to f$, which means $\phi_n-\psi_n\to 0$, and $\phi_n-\psi_n$ is a sequence of simple functions bounded by $2M$, and converges to $0$ almost everywhere. $\varepsilon>0$ gives $\int_{A_{\varepsilon}} |\phi_n-\psi_n|+\int_{E-A_{\varepsilon}}|\phi_n-\psi_n|\leq \varepsilon m(E)+ 2M \varepsilon$ (from Egorov and uniform convergence) hence $\lim_{n\to \infty}\int|\phi_n-\psi_n|=0 $ or $$ \lim_{n\to \infty} \int\phi_n=\lim_{n\to \infty}\int\psi_n$$
+
+}
+
+\thmp{Suppose $f$ and $g$ are bounded functions supported by a set of finite measure, then the following hold:
+\begin{enumerate}
+    \item (\textbf{Linearity}) $\int af+bg=a\int f+b\int g$
+    \item  (\textbf{Additivity}) If $E$ and $F$ are disjoint, then $\int_{E \cup F} f=\int_E f +\int_F f$
+    \item (\textbf{Monotonicity}) 
+    $\int f \leq \int g$ whenever $f\leq g$
+    \item (\textbf{Triangle}) $|\int f|\leq \int |f|$
+\end{enumerate}}{}
+
 \end{document}
