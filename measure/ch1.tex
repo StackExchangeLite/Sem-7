@@ -327,6 +327,26 @@ Since $f$ is measurable, $f^{-1}(\RR\cup\{\pm \infty\}-\{0\})$, or rather, the s
     \item (\textbf{Monotonicity}) 
     $\int f \leq \int g$ whenever $f\leq g$
     \item (\textbf{Triangle}) $|\int f|\leq \int |f|$
-\end{enumerate}}{}
+\end{enumerate}}{(1) $f=\lim_{n\to \infty} \phi_n$ and $g=\lim_{n\to\infty} \psi_n$, and $af+bg=\lim_{n\to\infty} (a\phi_n+b\psi_n)$, where $a\phi_n+b\psi_n$ is bounded, and is supported on $E$. Hence, $\int af+bg=\lim_{n\to\infty}\int a\phi_n+b\psi_n=a\int f+b \int g$
+\\\\ (2) $E$ and $F$ are disjoint, so $\chi_{E\cup F}=\chi_E+\chi_F$, which would yield the result.
+\\\\ (3) If $f\leq g,$ then $g-f\geq 0$, so the sequence of simple functions converging to $g-f$, would also be each non-negative, which means $\lim_{n\to\infty} \phi_n\geq 0$ which yields the result.
+\\\\ (4) Let $\phi_n \to f$ be a sequence of simple functions uniformly bounded and supported on the support of $f$. $|\lim_{n\to\infty} \int \phi_n|=\lim_{n\to\infty}|\int \phi_n|\leq \lim_{n\to\infty} \int|\phi_n|$ (notice that in the canonical form of $\phi_n \to f$, we get $|\phi_n|\to||f|$) which yields $|\int f|\leq \int|f|$. }
+\thmp{(\textbf{Bounded Convergence}) Let $f_n$ be a sequence of functions uniformly bounded by $M$, and each supported on a set $E$ of finite measure. Suppose $f_n\to f \ a.e$ (pointwise), $f$ is itself bounded by $M$, is supported on $E$ and $$\int|f_n-f|\underset{n\to\infty}{
+\to} 0 $$ }{Let $\varepsilon>0$. Consider $A_{\varepsilon}$ from Egorov such that $f_n\twoheadrightarrow f$ and $m(E-A_{\varepsilon})<\varepsilon$. Look at $\int|f_n-f|=\int_{A_{\varepsilon}}|f_n-f|+\int_{E-A_{\varepsilon}}|f_n-f|\leq \int_{A_{\varepsilon}}|f_n-f|+2M\varepsilon$, and for large enough $n$ (since inside $A_{\varepsilon}$ convergence is uniform) we have $|f_n-f|<\varepsilon$ for large enough $n$ for all $x$ (uniformly) which gives us $\int |f_n-f|<\varepsilon$ for large enough $N$, which means $\int|f_n-f|\to 0$. In other words: For a convergent sequence of uniformly bounded functions on the same support of finite measure, $$\mathbf{\int \lim_{n\to\infty} f_n=\lim_{n\to\infty}\int f_n} $$ 
+
+}
+\lemp{If $f\geq 0$, is bounded with its support $E$ being of finite measure and $\int f=0$, then $f=0$ almost everywhere}{Conider $E_k:=\{x: f(x)\geq 1/k \}$. Note that $1/k \chi_{E_k}\leq f \implies 1/k m(E_k) \leq \int f=0 $ For every $k$, $m(E_k)=0$, and this sequence is increasing. Therefore, $\cup_n E_n=\{x:f(x)>0\}$ is of measure $0$. Hence, $f=0$ almost everywhere. }
+\subsection{$\S$ Appendix: Riemann Integrable functions}
+\defn{Partition}{A partition $P$ of an interval $[a,b]$ is a collection of points $t_0,t_1,t_2,\cdots t_{P_k}$ such that $a=t_0<t_1<t_2 \cdots t_{P_{k}-1}< t_{P_k}=b$
+\\\\ Given a partition, we define $I_j$, the $j$th interval of the partition as $[t_{j-1},t_j]$
+}
+\defn{Upper and Lower Riemann Sum, given a Partition}{Let $f$ be a \emph{\textbf{Bounded}} function defined on a closed and bounded interval $[a,b]$, and $P$ be a given partition of $[a,b]$. We define $$\mathscr{L}(P,f):=\sum_{j=1}^{P_k}\inf_{x \in I_j}\{f(x)\}|I_j|$$ and $$\U(P,f):=\sum_{j=1}^{P_k}\sup_{x \in I_j}\{f(x)\}|I_j| $$}
+\defn{$P'$, the refinement of $P$}{Let $P$ be a partition, $a=t_0< t_1<t_2 \cdots t_{P_{k}-1}<t_{P_k}=b$. We say $P'$ is a refinement if, $P'\subseteq P$ in the sense that $P'=$ $a=u_0<u_1<\cdots u_{P'_k-1}<u_{P'_k}=b$ where a subsequence of $u_j$ is $t_j$}
+\defn{Riemann Integrability}{We say a bounded function $f$ defined on $[a,b]$ is riemann integrable if for every $\varepsilon>0$, there exists a partition such that $$\mathscr{L}(P,f)-\mathscr{U}(P,f)<\varepsilon $$ }
+\defn{(Alternate) Riemann Integrability}{We say a bounded function $f$ defined on $[a,b]$ is Riemann integrable if $$\sup_{P} \mathscr{U}(P,f)=\inf_{P} \mathscr{L}(P,f)$$}
+\thmp{These two definitions are equivalent}{$\implies)$ Let $f$ be Riemann Integrable in the sense that, given $\varepsilon>0$, there exists partition such that $\mathscr{L}(P,f)-\U(P,f)<\varepsilon$. Note that, for any refinement $P'$ of $P$, $\U(P,f)\leq U(P',f)$ and $\mathscr{L}(P',f)\leq \mathscr{L}(P,f)$. Also note that, given any two partitions $P_1$ and $P_2$, we have $$\mathscr{L}(P_2,f)\geq \mathscr{U}(P_1,f) $$ To see this, take a common refinement of $P_1$ and $P_2$, namely $P'$ such that $\mathscr{U}(P_1,f)\leq \mathscr{U}(P',f)$ and $\mathscr{L}(P',f)\leq \mathscr{L}(P_2,f)$. Together with $\U(P',f)\leq \mathscr{L}(P',f)$, we get the desired result.
+\\\\ Therefore, we have that $$\sup_{P}\mathscr{U}(P,f)\leq \inf_P \mathscr{L}(P,f)$$ Note that, the 1st definition intuitively speaks to how we can make the upper and lower sum arbitrarily close to each other, which speaks to the 2nd definition, which is that, the supremum and infimum resp. can be bought close together arbitrarily. Hence, the equality falls.
+\\\\ $\impliedby)$ 
+}
 
 \end{document}
