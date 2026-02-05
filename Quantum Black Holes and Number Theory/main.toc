@@ -5,5 +5,8 @@
 \contentsline {chapter}{\numberline {1}Prelimnaries}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Primer on Fourier Series}{1}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Discrete Fourier Transform}{1}{subsection.1.1.1}%
-\contentsline {chapter}{Appendices}{4}{section*.5}%
-\contentsline {chapter}{Bibliography}{4}{appendix*.6}%
+\contentsline {subsection}{\numberline {1.1.2}Fourier Series}{2}{subsection.1.1.2}%
+\contentsline {subsubsection}{A simple example with $\zeta -$function}{3}{section*.5}%
+\contentsline {subsubsection}{Cauchy's Theorem}{3}{section*.6}%
+\contentsline {section}{\numberline {1.2}Modular Forms}{3}{section.1.2}%
+\contentsline {subsubsection}{Weakly Holomorphic Modular Forms of weight $k$}{6}{section*.7}%

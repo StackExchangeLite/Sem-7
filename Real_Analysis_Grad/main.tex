@@ -9,8 +9,11 @@
 \input{config/mathletters.tex}
 
 \addbibresource{02End/math.bib}
+\usepackage{quiver}
+\usepackage{tikz-cd}
 \usepackage{amssymb}
 \usepackage[english]{babel}
+\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{epigraph}
 \usepackage{graphicx}
@@ -23,6 +26,7 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -57,6 +61,16 @@
 
 }
 
+\newcommand{\corp}[2]{
+\begin{corollary}
+    #1
+\end{corollary}
+
+\begin{Proof}\leftbar
+    #2
+\endleftbar\end{Proof}
+}
+
 \newcommand{\lemp}[3]{
 \begin{lemma}\textbf{#1}\
     #2   
@@ -67,7 +81,7 @@
 \endleftbar\end{Proof}
 
 }
-
+\newcommand{\rmk}[1]{\begin{remark}#1\end{remark}}
 \newcommand{\defn}[2]{
 \begin{definition}
     \textbf{(#1)}
@@ -102,7 +116,7 @@
     %\include{00Intro/06_ToC-LoF-LoA.tex}
 
     \pagenumbering{arabic} \setcounter{page}{1}
-    \include{01Chapters/prelim.tex}
+    \include{01Chapters/abstract_int.tex}
     % \include{01Chapters/02LpConvergence.tex}
     % \include{01Chapters/03FourierTransform.tex}
     % \include{01Chapters/04Holomorphic.tex}

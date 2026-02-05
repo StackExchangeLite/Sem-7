@@ -23,6 +23,7 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -45,6 +46,8 @@
     \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
 }
 {\endMakeFramed}
+
+\newtheorem{fact}[theorem]{Fact}
 
 \newcommand{\thmp}[3]{    
 \begin{theorem} \textbf{#1}\
@@ -77,6 +80,8 @@
 \end{definition}
 
 }
+
+
 \newenvironment{Proof}[1][Proof]
   {\proof[#1]\leftskip=0.2cm }
   {\endproof}
@@ -88,7 +93,17 @@
 \leftbar #3 \leftskip=0.5cm \hfill\qedsymbol
 \endleftbar
 }
+\newcommand{\corp}[2]{
+\begin{corollary}
+#1
+\end{corollary}
 
+\begin{Proof}\leftbar
+    #2
+\endleftbar\end{Proof}
+
+
+}
 
 
 

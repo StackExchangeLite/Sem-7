@@ -4,10 +4,7 @@
 
 \section{Primer on Fourier Series}\label{Fourier}
 \subsection{Discrete Fourier Transform}
-\thmp{Gauss}{Eden is a garden}{proof is trivial}
-\thmp{}{wowow theorem is this}{this is proof}
-\lemp{Gaus}{easy thm}{hard proof}
-\lemp{}{Not so easy lemma for a easy thm}{hard proof}
+
 Let \begin{equation}
   \omega:=e^{2\pi i /n}
 \end{equation} be the $n$th root of unity. We then have the following identity:
@@ -21,3 +18,72 @@ $$M=\begin{bmatrix} 1 & 1 & 1 & \cdots \\ 1 & \omega^{-1} & \omega^{-2} & \cdots
  $$M^{-1}=\frac{1}{n}\begin{bmatrix} 1 & 1 & 1 & \cdots \\ 1 & \omega & \omega^2 & \cdots \\ 1 & \omega^2 & \omega^4 & \cdots \\ \vdots & \vdots &\vdots & \ddots
  \end{bmatrix} $$
 
+\defn{Discrete Fourier Transform}{The linear map $\varphi:\bbC^n\to \bbC^n$ given by the matrix $$M=\frac{1}{n}\begin{bmatrix} 1 & 1 & 1 & \cdots \\ 1 & \omega^{-1} & \omega^{-2} & \cdots \\ 1 & \omega^{-2} & \omega^{-4} & \cdots \\ \vdots & \vdots &\vdots & \ddots
+ \end{bmatrix} $$ is called the discrete fourier transform.
+ }
+
+\subsection{Fourier Series}
+
+\defn{$\bbS$}{Denote $\bbS$ as the space of all complex valued $\bbZ$ periodic functions on $\bbR$ that are Lebesgue Measurable (For the applications, we take them to be \emph{continuous}). If $f\in \bbS$, then $\forall \ x \in \bbR,\ f(x)=f(x+1)$}
+\defn{Hermitian Inner Product}{On $\bbS $ (Which is a vector space), define $\langle f,g\rangle:=\int_0^1 f \bar{g} dx$ } 
+\defn{Fourier Coefficients $c_n$ and the Fourier Series}{For $n\in \bbZ$ $$c_n(f):=\langle f,\exp(2\pi i n x)\rangle=\int_{0}^{1} f \exp(-2\pi i n x)dx $$
+The Fourier Series of the function $f$ is defined as $$\sum_{-\infty}^{\infty} c_n \exp(2\pi i n x) =\sum_{n=-\infty}^{\infty}(\int_{0}^1 f(t)\exp(-2\pi i n t)dt)(\exp(2\pi i n x))  $$}
+
+\begin{lemma}\label{nice lemma}
+{Let $f:\bbR \to \bbC$ be a $\bbZ$ periodic function. Let $c_n:=\langle f,\exp(2\pi i n x)\rangle$ as usual. Call $f$ "nice" if $\{c_n\}$ converges abosolutely, $|c_n|\leq C/n^2$ for some constant $C$ and for some $e>1/2$, for all $x\in \bbR,h\in \bbR^+$, $$|f(x+h)-f(x)|\leq C|h|^e $$ (e=1 is called \emph{Lipshitz}).
+\\ If $f$ is "nice" and $c_n(f)=\langle f(x),\exp(2\pi i n x)\rangle=0$ for all $n \in \bbN$, then $f\equiv 0$.}  
+\end{lemma}
+\begin{lemma}
+  If $f:\bbR \to \bbC$ (a $\bbZ$ periodic function) is "nice" (as defined in \ref{nice lemma}), then $$ \sum_{n \in \bbZ} c_n \exp(2\pi i n x) =f(x)$$  
+\end{lemma}
+\lemp{Parseval}{Suppose $f:\bbR\to \bbC$ is a "nice" function (as defined in \ref{nice lemma}). Then $$\langle f,f\rangle=\sum_{n\in \bbZ}|c_n|^2$$}{$\langle f,f\rangle=\int_{0}^1 (\sum_{n\in \bbZ}c_n \exp(2\pi i n x))(\sum_{m\in \bbZ}c_m\exp(-2\pi m x))dx$ which gives $$\sum_n \sum_n c_n c_m \int_0^1 (\exp(2\pi i x (n-m))dx) $$ which yields $$\sum_n \sum_m c_n c_m \delta_{mn}=\sum_n |c_n|^2$$}
+
+\subsubsection{A simple example with $\zeta-$function}
+We define \begin{equation}
+  \zeta(s):=\sum_{n=1}^{\infty} 1/n^s
+\end{equation} This converges for all $s>1$ and diverges for all $s\leq 1$
+Let $f(x)=2\pi^2(x-1/2)^2$. By computation we have $\langle f,f\rangle=\pi^4/20$, $c_0=2\pi^2/6$ and $c_n=1/n^2$. Parseval gives us $$\sum_{n\in \bbZ}|c_n|^2=\langle f,f\rangle=\pi^2/20 $$
+Which in turn gives us that $$\zeta(4)=\pi^4/90$$
+\subsubsection{Cauchy's Theorem}
+\begin{theorem}
+  (\textbf{Cauchy- weak version}) Let $f:U\to \bbC$ be holomorphic on the simply connected domain $U$. Let $P$ be some polygon on $U$. Then $$\int_P f(z)dz=0$$ 
+\end{theorem}
+\section{Modular Forms}
+\defn{Upper Half Plane $\bbH$}{$$\bbH:=\{z\in \bbC: im(z)>0\}$$}
+\defn{$SL(2,\bbR)$}{$$SL(2,\bbR):=\bigg\{M=\bigg{(}\begin{matrix}a & b \\ c &d \end{matrix}\bigg{)}: a,b,c,d \in \bbR \textbf{ and } ad-bc=1 \bigg\} $$}
+\defn{$GL(2,\bbR)$}{$$GL(2,\bbR):=\bigg\{M=\bigg{(}\begin{matrix}a & b \\ c &d \end{matrix}\bigg{)}: a,b,c,d \in \bbR \textbf{ and } ad-bc\neq 0 \bigg\} $$}
+\defn{$GL^+(2,\bbR)$}{$$GL^+(2,\bbR):=\bigg\{M=\bigg{(}\begin{matrix}a & b \\ c &d \end{matrix}\bigg{)}: a,b,c,d \in \bbR \textbf{ and } ad-bc>0\bigg\} $$}
+We have rather trivially the following inclusions
+$$SL(2,\bbR)\hookrightarrow GL^+(2,\bbR) \hookrightarrow GL(2,\bbR) $$
+\defn{Modular Form}{Let $k \in \bbZ$. $f:\bbH\to \bbC$ is a modular form of weight $k$ if: 
+\begin{enumerate}
+  \item For all $\bigg(\begin{matrix}a&b \\c&d \end{matrix}\bigg) \in SL(2,\bbZ)$ and $z \in \bbH$, $$f(\frac{az+b}{cz+d})=(cz+d)^k f(z) $$
+  \item $f(z)$ is bounded as $im(z)\to \infty$
+  \item $f$ is Holomorphic on all of $\bbH$
+\end{enumerate}}
+\corp{$\forall x \in \bbH \ f(x+1)=f(x)$}{Since $\bigg(\begin{matrix}1&1 \\0&1 \end{matrix}\bigg)\in SL(2,\bbZ)$, we have the result trivially.}
+\corp{$\forall x \in \bbH \ f(-1/x)=x^kf(x) $}{Since $\bigg(\begin{matrix}0&-1 \\1&0 \end{matrix}\bigg)\in SL(2,\bbZ)$, we have the result.}
+\corp{$f(x)=(-1)^k f(x)$}{Since $\bigg(\begin{matrix}-1&0 \\0&-1 \end{matrix}\bigg)\in SL(2,\bbZ)$, the result holds. Moreover, if $k$ is odd, $f$ has to be the 0 map. \emph{\textbf{The only non zero modular forms are of even weights.}} }
+\fact\label{fact of generation of SL}{$SL(2,\bbZ)$ is generated by $\bigg(\begin{matrix}1&1 \\0&1 \end{matrix}\bigg) $ and $ \bigg(\begin{matrix}0&-1 \\1&0 \end{matrix}\bigg) $. }
+
+\begin{corollary}
+  From \ref{fact of generation of SL} we have that any modular form can be re-characterised (without reference to $SL(2,\bbZ)$) by the following axioms: $f:\bbH\to \bbC$ is a Modular Form of weight $k$ if:
+  \begin{enumerate}
+    \item $f$ is holomorphic on $\bbH$
+    \item $f(\tau)$ bounded as $im(\tau)\to \infty$ (bounded along the $y$ coordinate of the complex plane)
+    \item $f(\tau+1)=f(\tau)$ and $f(-1/\tau)=(\tau)^k f(\tau)$ $\forall \tau \in \bbH$
+  
+  
+  \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+  Since $f$ is $\bbZ$ periodic, and holomorphic, we can fourier expand $f$, which gives $$f(x+iy)=\sum_{n \in \bbZ} a_n e^{2\pi i n (x+iy)}=\sum_{n\in \bbZ} a_n e^{2\pi i nx}e^{-2\pi n y} $$
+  If $a_n$ for negative $n$ were to be non zero, we would have that $f$ is unbounded as $y\to \infty$ (since $e^{2\pi n y}$ would go unbounded). Therefore, $\forall n<0, a_n=0$. $a_0$ can be $0$, in which case $\lim_{y\to \infty} f(x+iy)=a_0=0$. If $a_0=0$, then the modular form is called a \textbf{Cusp Form}.\label{cusp form} 
+\end{corollary}
+\subsubsection{Weakly Holomorphic Modular Forms of weight $k$}
+\defn{Weakly Holomorphic Modular Forms of weight $k$}{We say a function $f:\bbH\to \bbC$ is a weakly holomorphic modular form of weight $k$ if:
+\begin{enumerate}
+  \item $f(a\tau+b/c\tau+d)=(c\tau+d)^kf(\tau)$ for every $\bigg(\begin{matrix}a&b \\c&d \end{matrix}\bigg)\in SL(2,\bbZ)$
+  \item $f(\tau)\in \mathcal{O}(q^{-N})$ instead of $\mathcal{O}(q^0)$ (for $f=\sum_{n \in \bbZ} a_n q^n$) which yields $f=\sum_{n=-N}^{\infty}a_n q^n $ (Note that $f$ loses the boundedness property as $im(x)$ goes to infinity. )
+\end{enumerate} }
