@@ -1,12 +1,24 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Contents}{vi}{chapter*.2}%
-\contentsline {chapter}{List of Figures}{vii}{chapter*.3}%
-\contentsline {chapter}{List of Tables}{viii}{chapter*.4}%
+\contentsline {chapter}{Contents}{v}{chapter*.2}%
+\contentsline {chapter}{List of Figures}{vi}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.4}%
 \contentsline {chapter}{\numberline {1}Prelimnaries}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Primer on Fourier Series}{1}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Discrete Fourier Transform}{1}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Fourier Series}{2}{subsection.1.1.2}%
-\contentsline {subsubsection}{A simple example with $\zeta -$function}{3}{section*.5}%
-\contentsline {subsubsection}{Cauchy's Theorem}{3}{section*.6}%
-\contentsline {section}{\numberline {1.2}Modular Forms}{3}{section.1.2}%
-\contentsline {subsubsection}{Weakly Holomorphic Modular Forms of weight $k$}{6}{section*.7}%
+\contentsline {subsection}{\numberline {1.1.1}Fourier Series}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}(General Discussion) Periodic Functions of a Real Variable}{2}{subsection.1.1.2}%
+\contentsline {subsubsection}{Constructing periodic functions}{2}{section*.5}%
+\contentsline {subsubsection}{Unfolding Trick, and Poisson Summation Formula}{2}{section*.6}%
+\contentsline {subsubsection}{Cauchy's Theorem}{3}{section*.7}%
+\contentsline {section}{\numberline {1.2}Modular Forms}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Basic Definitions and Results}{4}{subsection.1.2.1}%
+\contentsline {subsubsection}{Weakly Holomorphic Modular Forms of weight $k$ (for $SL_2(\mathbb {Z})$)}{5}{section*.8}%
+\contentsline {subsubsection}{Some Growth Properties of Modular forms ($SL_2(\mathbb {Z})$)}{6}{section*.9}%
+\contentsline {subsection}{\numberline {1.2.2}Fundamental Domain and the action of $SL_2(\mathbb {Z})$ on $\mathbb {H}$}{7}{subsection.1.2.2}%
+\contentsline {subsubsection}{Shimura's Slash Notation}{8}{section*.10}%
+\contentsline {subsubsection}{What are Cusps?}{8}{section*.11}%
+\contentsline {chapter}{Appendices}{10}{section*.12}%
+\contentsline {chapter}{\numberline {A}Modular Curves and Cusps}{10}{appendix.A}%
+\contentsline {section}{\numberline {A.1}The Problem of Non-Compactness}{10}{section.A.1}%
+\contentsline {section}{\numberline {A.2}The Boundary of $\mathbb {H}$ and the Rational Projective Line}{10}{section.A.2}%
+\contentsline {section}{\numberline {A.3}The Horoball Topology and Modular Curves}{11}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Cusps and $q$-Expansions}{12}{section.A.4}%

@@ -1,2 +1,75 @@
 % TeX root = ../main.tex
+\chapter{Modular Curves and Cusps}
 
+\section{The Problem of Non-Compactness}
+
+Modular forms for $SL_2(\bbZ)$ live naturally on the upper half-plane $\bbH$, where the fundamental domain $\mathcal{F}$ captures the geometry of the quotient $SL_2(\bbZ)\backslash \bbH$. However, $\mathcal{F}$ is not compact; it possesses a non-compact "end" as $\operatorname{Im}(z) \to \infty$[cite: 2]. This non-compactness prevents the direct application of standard results from the theory of compact Riemann surfaces, such as the Riemann-Roch theorem.
+
+Furthermore, the $q$-expansion $f(z) = \sum_{n=0}^{\infty} a_n q^n$ of a modular form has a "missing point" at $q = 0$, which corresponds to $z = i\infty$. The boundedness condition in the definition of a modular form is essentially a requirement on the behavior at this missing point. When generalizing to congruence subgroups $\Gamma \leq SL_2(\bbZ)$, multiple non-compact ends appear, each contributing a missing point known as a \emph{cusp}.
+
+\section{The Boundary of $\bbH$ and the Rational Projective Line}
+
+Topologically, the boundary of $\bbH$ in $\bbC$ is $\bbR \cup \{i\infty\} \cong S^1$[cite: 8]. A naive compactification adjoining all of $\bbR \cup \{i\infty\}$ to $\bbH$ fails because the action of $SL_2(\bbZ)$ on irrational points in $\bbR$ is dense and non-discrete, leading to a non-Hausdorff quotient space[cite: 9, 10, 19]. 
+
+
+Conversely, $SL_2(\bbZ)$ preserves the set of rational points $\bbQ \cup \{i\infty\}$[cite: 12]. 
+
+\defn{Projective Line over $\bbQ$}{
+    $$\bbP^1(\bbQ) := \bbQ \cup \{i\infty\}$$
+    We represent a rational $p/q$ in lowest terms as $[p:q] \in \bbP^1(\bbQ)$, with $i\infty$ as $[1:0]$[cite: 25]. The action of $\gamma = \begin{pmatrix}a&b\\c&d\end{pmatrix} \in SL_2(\bbZ)$ is given by $\gamma \cdot [p:q] = [ap+bq : cp+dq]$[cite: 26].
+}
+
+\lemp{Transitivity of the Action}{
+    $SL_2(\bbZ)$ acts transitively on $\bbP^1(\bbQ)$[cite: 27].
+}{
+    For any $[p:q] \in \bbP^1(\bbQ)$ with $\gcd(p,q)=1$, we seek $\gamma \in SL_2(\bbZ)$ such that $\gamma \cdot (p/q) = i\infty$, implying the denominator $cp+dq = 0$[cite: 28, 29]. Setting $c = q$ and $d = -p$, we have $\gcd(c,d)=1$[cite: 30]. By Bezout's theorem, there exist $a,b$ such that $ad-bc=1$, thus $\gamma = \begin{pmatrix}a&b\\q&-p\end{pmatrix} \in SL_2(\bbZ)$ sends $p/q$ to $i\infty$[cite: 31].
+}
+
+\begin{corollary}
+    $SL_2(\bbZ)$ has exactly \textbf{one} cusp, as $\bbP^1(\bbQ)$ is a single orbit that collapses to one point in the quotient[cite: 32].
+\end{corollary}
+
+\defn{Cusps of $\Gamma$}{
+    Let $\Gamma \leq SL_2(\bbZ)$ be a subgroup. The \emph{cusps of $\Gamma$} are the orbits of the action of $\Gamma$ on $\bbP^1(\bbQ)$:
+    $$\operatorname{Cusps}(\Gamma) := \Gamma \backslash \bbP^1(\bbQ)$$
+    For a finite-index subgroup, there are finitely many such cusps[cite: 34, 35].
+}
+
+\section{The Horoball Topology and Modular Curves}
+
+To compactify the quotient, we define the \emph{horoball topology} on $\bbH^* := \bbH \cup \bbP^1(\bbQ)$[cite: 36, 41].
+
+\defn{Horoball Neighborhoods}{
+    \begin{enumerate}
+        \item For $z_0 \in \bbH$, neighborhoods are standard open sets in $\bbC$[cite: 38].
+        \item For the cusp $i\infty$, a neighborhood is $U_M(i\infty) := \{z \in \bbH : \operatorname{Im}(z) > M\} \cup \{i\infty\}$ for $M > 0$[cite: 39].
+        \item For a finite cusp $s \in \bbQ$, let $\sigma \in SL_2(\bbZ)$ such that $\sigma(i\infty) = s$. A neighborhood is $U_M(s) := \sigma\left(U_M(i\infty)\right) \cup \{s\}$[cite: 40].
+    \end{enumerate}
+}
+
+
+\defn{Modular Curve $X(\Gamma)$}{
+    For a finite-index subgroup $\Gamma \leq SL_2(\bbZ)$, the modular curve is the quotient:
+    $$X(\Gamma) := \Gamma \backslash \bbH^* = \Gamma \backslash \left(\bbH \cup \bbP^1(\bbQ)\right)$$
+    equipped with the quotient topology from the horoball topology[cite: 45, 46].
+}
+
+\thmp{Compactness of the Modular Curve}{
+    $X(\Gamma)$ is a compact Riemann surface[cite: 47].
+}{
+    The non-compact ends of $\Gamma \backslash \bbH$ correspond to the finitely many cusps of $\Gamma$[cite: 48]. Each cusp horoball maps to a punctured disk around $q=0$ in local coordinates[cite: 49]. Adjoining these finitely many points fills the punctures, resulting in a compact space[cite: 50]. At a cusp $s$ with width $h$, the map $z \mapsto q_h = e^{2\pi i z / h}$ provides a well-defined complex chart[cite: 52, 53].
+}
+
+\section{Cusps and $q$-Expansions}
+
+\defn{Width of a Cusp}{
+    Let $s$ be a cusp of $\Gamma$ and $\sigma \in SL_2(\bbZ)$ satisfy $\sigma(i\infty)=s$. The \emph{width} $h$ is the smallest positive integer such that $\sigma^{-1}\begin{pmatrix}1&h\\0&1\end{pmatrix}\sigma \in \Gamma$[cite: 54, 55].
+}
+
+\begin{corollary}
+    For $f \in M_k(\Gamma)$, each cusp $s$ of width $h$ yields a convergent expansion $f(z) = \sum_{n=0}^{\infty} a_n(s)\, q_h^n$. For a cusp form $f \in S_k(\Gamma)$, we require $a_0(s) = 0$ at \textbf{every} cusp $s$[cite: 56].
+\end{corollary}
+
+\begin{remark}
+    In the context of the Dabholkar--Murthy--Zagier paper, this philosophy extends to Jacobi and Siegel modular forms[cite: 64]. The cusps of the resulting compactified spaces index the different $q$-expansions of the modular objects, and being a cusp form necessitates vanishing at all such boundary points[cite: 66, 67].
+\end{remark}
