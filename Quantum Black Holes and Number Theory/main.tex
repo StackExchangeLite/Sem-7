@@ -1,7 +1,7 @@
 % Created by Joel Sleeba, MSc 2021, Mathematics, IISER Thiruvananthapuram
 % Connect with me at joelsleeba.github.io or github.com/joelsleeba
-\documentclass[8pt]{report}
-
+\documentclass[11pt]{report}
+\usepackage[a4paper, margin=0.75in]{geometry}
 \input{config/packages.tex}
 \input{config/options.tex}
 \input{config/colors.tex}
@@ -10,6 +10,7 @@
 
 \addbibresource{02End/math.bib}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{epigraph}
@@ -22,16 +23,16 @@
 \usepackage{tikz}
 \usepackage{comment}
 
+\theoremstyle{definition}
+
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{xca}[theorem]{Exercise}
 
-\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
 \numberwithin{equation}{section}
@@ -72,15 +73,14 @@
 
 }
 
+\newtheorem{definition}[theorem]{Definition}
 \newcommand{\defn}[2]{
 \begin{definition}
     \textbf{(#1)}
     \
     #2
     
-\end{definition}
-
-}
+\end{definition}}
 
 
 \newenvironment{Proof}[1][Proof]
@@ -111,15 +111,15 @@
 \begin{document}
     \include{00Intro/01_Title.tex}
     \pagenumbering{roman} \setcounter{page}{2}
-    \include{00Intro/02_Declaration.tex}
+    %\include{00Intro/02_Declaration.tex}
     \include{00Intro/03_Certificate.tex}
     %\include{00Intro/04_Acknowledgement.tex}
-    \include{00Intro/05_Abstract.tex}
+    %\include{00Intro/05_Abstract.tex}
     \include{00Intro/06_ToC-LoF-LoA.tex}
 
     \pagenumbering{arabic} \setcounter{page}{1}
     \include{01Chapters/prelim.tex}
-    % \include{01Chapters/02LpConvergence.tex}
+    \include{01Chapters/ch1.tex}
     % \include{01Chapters/03FourierTransform.tex}
     % \include{01Chapters/04Holomorphic.tex}
 
