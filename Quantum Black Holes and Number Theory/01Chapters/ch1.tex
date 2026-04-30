@@ -1,2 +1,154 @@
 % TeX root = ../main.tex
 
+\chapter{Quantum Black Holes and Modular Forms}
+
+Classically, a black hole is characterised entirely by its 
+mass, charge, and angular momentum (the ``no-hair theorem''). In particular, it 
+has no internal structure.
+
+Bekenstein and Hawking 
+showed in the 1970s that a black hole carries an entropy proportional to the area 
+of its event horizon:
+\begin{equation}
+    S_{\text{BH}} = \frac{A}{4G_N}
+\end{equation}
+where $A$ is the horizon area and $G_N$ is Newton's constant. This is a 
+macroscopic, thermodynamic entropy. By the Boltzmann relation $S = \log \Omega$, 
+this entropy should equal the logarithm of the number of microscopic quantum 
+states $\Omega$ of the black hole.
+
+We consider a particular class of black holes in string theory, known as BPS black holes. 
+The partition function $Z(\tau)$ that counts the degeneracies of these BPS states turns out to be a modular form, as we shall see.
+
+\section{Partition Functions and BPS State Counting}
+We now explain how modular forms arise naturally in the counting of BPS states, following the discussion in \cite{DMZ}. A lot more is discussed in appendix~\ref{app:Black_Holes}.
+
+The Fock Space $\mathcal{H}$ is built from bosonic 
+oscillators in $24$ transverse spatial directions. For each direction 
+$i \in \{1,\ldots,24\}$ and each mode number $n \in \{1,2,3,\ldots\}$, 
+we have a pair of creation/annihilation operators $a^\dagger_{in}$, $a_{in}$ 
+satisfying the canonical commutation relations:
+\begin{equation}\label{CCR}
+    [a_{in},\, a^\dagger_{jm}] = \delta_{ij}\,\delta_{n+m,\,0}
+    \qquad i,j \in \{1,\ldots,24\},\quad n,m \in \{1,2,\ldots\}
+\end{equation}
+All other commutators vanish: $[a_{in}, a_{jm}] = 0$ and 
+$[a^\dagger_{in}, a^\dagger_{jm}] = 0$.
+
+The \textbf{Hamiltonian} is:
+\begin{equation}\label{Hamiltonian}
+    H = \sum_{i=1}^{24}\sum_{n=1}^{\infty} n\, a^\dagger_{in} a_{in} - 1
+\end{equation}
+The partition function is given by (Appendix~ \ref{app:Partition_Function}) \begin{equation}
+    Z(\tau)=Tr_{\mathcal{H}}\left(q^H\right)=q^{-1}\prod_{n=1}^{\infty} \frac{1}{(1-q^n)^{24}} = \frac{1}{\Delta(\tau)}
+\end{equation} 
+Where $$\Delta(\tau) = q \prod_{n=1}^{\infty} (1 - q^n)^{24}.$$
+This gives us \begin{equation}\label{the_inverse_delta}
+    \boxed{Z(\tau) = \frac{1}{\Delta(\tau)}}
+\end{equation}   
+
+From Appendix~\ref{app:Modular_Properties_of_Z}, we see that $Z(\tau)$ is a weakly holomorphic modular form of weight $-12$. It has a simple pole at the cusp $\tau = i\infty$, and is holomorphic everywhere else on $\bbH$. It therefore has a $q$-expansion of the form
+\begin{equation}
+    Z(\tau) = \sum_{n=-1}^{\infty} d(n) q^n
+\end{equation}
+where $d(n)$ counts the degeneracy of BPS states with charge parameter $n$.
+We can retrieve the coefficients $d(n)$ via the Fourier inversion formula
+\begin{equation}
+    d(n) = \int_{\mathcal{C}} e^{-2\pi i n \tau} Z(\tau) \, d\tau
+\end{equation}
+where $\mathcal{C}$ is a contour in $\bbH$ given by $0 \le \operatorname{Re}(\tau) < 1$, with fixed imaginary part. Since $Z(\tau)$ is holomorphic on $\bbH$ except at the cusp, the contour can be deformed freely without changing the value of the integral. The verification of this, as well as the physical interpretation of the $d(n)$ coefficients can be seen in Appendix~\ref{app:deg}.
+
+\section{The Combinatorics}
+
+\subsection{Partitions of Integers}
+
+Recall that a \textbf{partition} of a positive integer $N$ is a way of writing 
+$N$ as an ordered (non-increasing) sum of positive integers:
+\begin{equation}
+    N = \lambda_1 + \lambda_2 + \cdots + \lambda_k, \qquad 
+    \lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_k \geq 1
+\end{equation}
+The number of such partitions is $p(N)$. The generating function is:
+\begin{equation}
+    \sum_{N=0}^{\infty} p(N)\, q^N = \prod_{n=1}^{\infty} \frac{1}{1-q^n}
+\end{equation}
+
+\subsection{Colored Partitions}
+
+A \textbf{colored partition} of $N$ using $r$ colors is a partition where each 
+integer comes in $r$ distinguishable colors. Equivalently, it is a partition 
+of $N$ using integers from the alphabet $\{1_1, 1_2, \ldots, 1_r, 2_1, \ldots, 2_r, \ldots\}$ 
+where the subscript denotes the color. The number of such partitions is $p_r(N)$, 
+with generating function:
+\begin{equation}
+    \sum_{N=0}^{\infty} p_r(N)\, q^N = \prod_{n=1}^{\infty}\frac{1}{(1-q^n)^r}
+\end{equation}
+
+
+
+\subsection{Identification $d(n) = p_{24}(n+1)$}
+
+Comparing with our partition function:
+\begin{equation}
+    Z(\tau) = q^{-1}\prod_{n=1}^{\infty}\frac{1}{(1-q^n)^{24}}
+    = q^{-1}\sum_{N=0}^{\infty} p_{24}(N)\,q^N
+    = \sum_{N=0}^{\infty} p_{24}(N)\, q^{N-1}
+\end{equation}
+Setting $n = N-1$ (so $N = n+1$):
+\begin{equation}
+    Z(\tau) = \sum_{n=-1}^{\infty} p_{24}(n+1)\,q^n
+\end{equation}
+Comparing with \eqref{q-expansion Z}, we read off:
+\begin{equation}\label{d=p24}
+    \boxed{d(n) = p_{24}(n+1)} \qquad n \geq 0
+\end{equation}
+The degeneracy of the BPS state with charge invariant $n$ equals the number 
+of ways to partition the integer $n+1$ using integers of $24$ colors.
+
+The Boltzmann relation $S = \log \Omega$ tells us that the macroscopic entropy of the black hole is $S(n) = \log d(n)$. Using the asymptotic formula for $p_r(N)$, we can derive the asymptotic growth of $d(n)$, and hence of the entropy $S(n)$. This is done in Appendix~\ref{app:Asymptotics}. We immediately read off the leading asymptotic growth of the entropy:
+\begin{equation}
+    S(n) \sim 4\pi \sqrt{n} \qquad \text{as } n \to \infty
+\end{equation}
+This matches the Bekenstein--Hawking entropy $S_{\text{BH}} = \frac{A}{4G_N}$, which also grows as $\sqrt{n}$ for large $n$. 
+
+\section{Duality and a Second Counting}
+
+\subsection{The D1-D5 System}
+
+The DH states have a dual description in the Type-II frame.
+In this description, the degeneracy $d(m)$ counts the number of such bound 
+states, which equals the \textbf{orbifold Euler characteristic}:
+\begin{equation}
+    d(m) = \chi\!\left(\operatorname{Sym}^{m+1}(K3)\right)
+\end{equation}
+the Euler characteristic of the symmetric product of $(m+1)$ copies of the 
+$K3$ surface. The generating function is:
+\begin{equation}\label{Z-hat}
+    \hat{Z}(\sigma) = \sum_{m=-1}^{\infty} \chi\!\left(\operatorname{Sym}^{m+1}(K3)\right) 
+    p^m, \qquad p := e^{2\pi i\sigma}
+\end{equation}
+A celebrated computation shows:
+\begin{equation}\label{Zhat=1/Delta}
+    \hat{Z}(\sigma) = \frac{1}{\Delta(\sigma)}
+\end{equation}
+
+\subsection{Duality Consistency}
+
+Equations \eqref{the_inverse_delta} and \eqref{Zhat=1/Delta} say that two completely 
+different counting problems- one counting perturbative heterotic string states, 
+the other counting D-brane bound states- give identical partition functions 
+$1/\Delta$. The heterotic string on $T^4 \times T^2$ is dual to Type-II on $K3 \times T^2$, 
+and this duality maps the DH states on one side to the D1-D5 bound states on the 
+other. The equality of the two partition functions was historically one of the 
+first precision checks of heterotic-Type-II duality.
+
+\section{Jacobi Forms and Elliptic Genera: A brief digression}
+In the context of two-dimensional superconformal field theories (SCFTs), the elliptic genus is an invariant that captures information about the spectrum of BPS states. For a SCFT with target space $M$, the elliptic genus is defined as a trace over the Hilbert space of the theory \cite{DMZ}:
+\begin{equation}
+    \phi_M(\tau, z) = \operatorname{Tr}_{\text{RR}} \left( (-1)^F q^H y^J\right)
+\end{equation}
+where $q = e^{2\pi i \tau}$, $y = e^{2\pi i z}$, and $F$ is the fermion number operator. The elliptic genus is a weak Jacobi form of weight $0$ and index $m$, where $m$ depends on the geometry of $M$. For example, for a K3 surface, the elliptic genus is given by: \cite[Eq.~4.50]{DMZ}
+\begin{equation}
+    \phi_{K3}(\tau, z) = 8 \left( \frac{\theta_2(\tau, z)^2}{\theta_2(\tau, 0)^2} + \frac{\theta_3(\tau, z)^2}{\theta_3(\tau, 0)^2} + \frac{\theta_4(\tau, z)^2}{\theta_4(\tau, 0)^2} \right)
+\end{equation}
+where $\theta_i$ are the Jacobi theta functions. The Fourier coefficients of $\phi_{K3}$ encode the degeneracies of BPS states in the SCFT, and their growth can be analyzed using the theory of Jacobi forms. This is just one example of how modular and Jacobi forms arise naturally in the study of quantum black holes and their associated counting problems.

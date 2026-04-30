@@ -1,7 +1,12 @@
 % Created by Joel Sleeba, MSc 2021, Mathematics, IISER Thiruvananthapuram
 % Connect with me at joelsleeba.github.io or github.com/joelsleeba
+
+% !TEX program = pdflatex
+% !TEX program = latexmk
+% !BIB program = biber
+
 \documentclass[11pt]{report}
-\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage[a4paper, margin=0.6in]{geometry}
 \input{config/packages.tex}
 \input{config/options.tex}
 \input{config/colors.tex}
@@ -18,7 +23,6 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{mathrsfs}
 \usepackage{framed}
-\usepackage{frame}
 \usepackage{quiver}
 \usepackage{tikz}
 \usepackage{comment}
@@ -106,6 +110,14 @@
 
 }
 
+\newcommand{\appchapter}[1]{%
+  \refstepcounter{chapter}%
+  \vspace{1em}
+  {\noindent\Large\bfseries \thechapter.\ #1\par}
+  \vspace{0.3em}
+  \noindent\rule{\textwidth}{0.4pt}
+  \vspace{0.8em}
+}
 
 
 \begin{document}

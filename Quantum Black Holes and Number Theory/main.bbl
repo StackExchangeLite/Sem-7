@@ -16,5 +16,226 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{KonradNotes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=90ec52f4eb212ed86bae500930692247}{%
+           family={Conrad},
+           familyi={C\bibinitperiod},
+           given={Keith},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{90ec52f4eb212ed86bae500930692247}
+      \strng{fullhash}{90ec52f4eb212ed86bae500930692247}
+      \strng{fullhashraw}{90ec52f4eb212ed86bae500930692247}
+      \strng{bibnamehash}{90ec52f4eb212ed86bae500930692247}
+      \strng{authorbibnamehash}{90ec52f4eb212ed86bae500930692247}
+      \strng{authornamehash}{90ec52f4eb212ed86bae500930692247}
+      \strng{authorfullhash}{90ec52f4eb212ed86bae500930692247}
+      \strng{authorfullhashraw}{90ec52f4eb212ed86bae500930692247}
+      \field{labelalpha}{Con16}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://ctnt-summer.math.uconn.edu/wp-content/uploads/sites/1632/2016/02/CTNTmodularforms.pdf}}
+      \field{note}{Lecture notes}
+      \field{title}{Modular Forms (CTNT Notes)}
+      \field{year}{2016}
+    \endentry
+    \entry{HokerKaidi}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{2}{}{%
+        {{hash=906626cb604173f1eced48267f65282d}{%
+           family={Chester},
+           familyi={C\bibinitperiod},
+           given={Shai\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=98631d13955f24ebd3d36b826e99e749}{%
+           family={Perlmutter},
+           familyi={P\bibinitperiod},
+           given={Elias},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{fullhash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{fullhashraw}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{bibnamehash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{authorbibnamehash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{authornamehash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{authorfullhash}{af45aec62df48b705d79caefb4ede2d5}
+      \strng{authorfullhashraw}{af45aec62df48b705d79caefb4ede2d5}
+      \field{labelalpha}{CP+22}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Lectures on Modular Forms and Black Holes}
+      \field{year}{2022}
+      \verb{eprint}
+      \verb 2208.07242
+      \endverb
+    \endentry
+    \entry{DMZ}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=0a2513226fbb3330feae96bb73b4339e}{%
+           family={Dabholkar},
+           familyi={D\bibinitperiod},
+           given={Atish},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3c29f713f9399df577a4a8e35bb134d3}{%
+           family={Murthy},
+           familyi={M\bibinitperiod},
+           given={Sameer},
+           giveni={S\bibinitperiod}}}%
+        {{hash=352b894a0121be31576ee2f0a4b12d83}{%
+           family={Zagier},
+           familyi={Z\bibinitperiod},
+           given={Don},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{fullhash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{fullhashraw}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{bibnamehash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{authorbibnamehash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{authornamehash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{authorfullhash}{62ca46fe30945399e60f16d41fabbeab}
+      \strng{authorfullhashraw}{62ca46fe30945399e60f16d41fabbeab}
+      \field{labelalpha}{DMZ12}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Quantum Black Holes, Wall Crossing, and Mock Modular Forms}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1208.4074
+      \endverb
+    \endentry
+    \entry{DiamondShurman}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=a81b5d2be04cd2286c0bfb9cf0200551}{%
+           family={Diamond},
+           familyi={D\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod}}}%
+        {{hash=289d9103f1389647fdafdc5e7a17a59f}{%
+           family={Shurman},
+           familyi={S\bibinitperiod},
+           given={Jerry},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{48b394691689a99660ec3b8541f78073}
+      \strng{fullhash}{48b394691689a99660ec3b8541f78073}
+      \strng{fullhashraw}{48b394691689a99660ec3b8541f78073}
+      \strng{bibnamehash}{48b394691689a99660ec3b8541f78073}
+      \strng{authorbibnamehash}{48b394691689a99660ec3b8541f78073}
+      \strng{authornamehash}{48b394691689a99660ec3b8541f78073}
+      \strng{authorfullhash}{48b394691689a99660ec3b8541f78073}
+      \strng{authorfullhashraw}{48b394691689a99660ec3b8541f78073}
+      \field{labelalpha}{DS05}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A First Course in Modular Forms}
+      \field{year}{2005}
+    \endentry
+    \entry{MasdeuNotes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=bf5c61494d537abff0f4ae9a9b498f0f}{%
+           family={Masdeu},
+           familyi={M\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{fullhash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{fullhashraw}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{bibnamehash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{authorbibnamehash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{authornamehash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{authorfullhash}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \strng{authorfullhashraw}{bf5c61494d537abff0f4ae9a9b498f0f}
+      \field{labelalpha}{Mas16}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Lecture notes}
+      \field{title}{Modular Forms Notes}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://mdave16.github.io/notes/Modular%20Forms%20-%20Marc%20Masdeu.pdf
+      \endverb
+      \verb{url}
+      \verb https://mdave16.github.io/notes/Modular%20Forms%20-%20Marc%20Masdeu.pdf
+      \endverb
+    \endentry
+    \entry{PrasadNotes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=de069150588f51743ff237f48c2b808e}{%
+           family={Prasad},
+           familyi={P\bibinitperiod},
+           given={Dipendra},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{de069150588f51743ff237f48c2b808e}
+      \strng{fullhash}{de069150588f51743ff237f48c2b808e}
+      \strng{fullhashraw}{de069150588f51743ff237f48c2b808e}
+      \strng{bibnamehash}{de069150588f51743ff237f48c2b808e}
+      \strng{authorbibnamehash}{de069150588f51743ff237f48c2b808e}
+      \strng{authornamehash}{de069150588f51743ff237f48c2b808e}
+      \strng{authorfullhash}{de069150588f51743ff237f48c2b808e}
+      \strng{authorfullhashraw}{de069150588f51743ff237f48c2b808e}
+      \field{labelalpha}{Pra10}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.math.iitb.ac.in/~dprasad/mf2.pdf}}
+      \field{note}{Lecture notes}
+      \field{title}{Modular Forms (Lecture Notes)}
+      \field{year}{2010}
+    \endentry
+    \entry{BrownNotes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=ed9b7985941f821b7c600e3973f62e51}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{fullhash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{fullhashraw}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{bibnamehash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{authorbibnamehash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{authornamehash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{authorfullhash}{ed9b7985941f821b7c600e3973f62e51}
+      \strng{authorfullhashraw}{ed9b7985941f821b7c600e3973f62e51}
+      \field{labelalpha}{Sch12}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.math.brown.edu/reschwar/MathNotes/modular.pdf}}
+      \field{note}{Lecture notes}
+      \field{title}{Modular Forms Notes}
+      \field{year}{2012}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
